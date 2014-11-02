@@ -1,0 +1,11 @@
+.DS_Store
+node_modules
+.grunt
+_SpecRunner.html
+dist
+src/*.js
+test/*.js
+npm-debug.log
+tmp
+public
+.ruby-*
