@@ -8,8 +8,14 @@ class @Infeedl.Placement
     @_client = new Infeedl.Client
     @_retrieve()
 
+  _sample: ->
+    location.hash == "#infeedl_sample"
+
   _retrieve: ->
-    @_client.get("/creative", placement_id: @id).done(((data) ->
+    params = { placement_id: @id }
+    params = Zepto.extend(params, sample: true) if @_sample()
+
+    @_client.get("/creative", params).done(((data) ->
       format = data.creatives.format
       Creative = Infeedl.Creatives["#{format.charAt(0).toUpperCase()}#{format.slice(1)}"]
 
