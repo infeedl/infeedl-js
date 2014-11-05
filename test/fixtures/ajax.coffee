@@ -12,10 +12,19 @@ jasmine.Ajax.install()
     sample_article:
       responseText: JSON.stringify(
         creatives:
-          id: 2
+          id: "00000000-0000-0000-0000-00000000201"
           format: "article"
           title: "WOW"
           link: "http://advertiser.com/sample-article"
           brand: "Supported by Brandname"
           image_url: "//cdn.infeedl.com/image.jpg"
+        linked:
+          placements: {
+            id: "00000000-0000-0000-0000-00000000101"
+            stylesheet: """
+#infeedl-placement-00000000-0000-0000-0000-00000000101 .infeedl--brand {
+  color: yellow;
+}
+            """
+          }
       )
