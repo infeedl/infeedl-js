@@ -2,8 +2,11 @@ Infeedl.Client._base = ""
 jasmine.Ajax.install()
 
 @AjaxFixtures =
-  common:
+  success:
     status: "200"
+    contentType: "application/json"
+  fail:
+    status: "500"
     contentType: "application/json"
   creative:
     sample_article:
@@ -13,4 +16,6 @@ jasmine.Ajax.install()
           format: "article"
           title: "WOW"
           link: "http://advertiser.com/sample-article"
+          brand: "Supported by Brandname"
+          image_url: "//cdn.infeedl.com/image.jpg"
       )

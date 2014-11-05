@@ -1,3 +1,11 @@
 <div class="infeedl--creative infeedl--article">
-  <a href="{{ creative.link }}" target="_blank" data-infeedl-events-click>{{ creative.title }}</a>
+  <a class="infeedl--link-image" href="{{ creative.link }}" target="_blank" data-infeedl-events-click>
+    <img class="infeedl--image" src="{{ creative.image_url }}" alt="{{ creative.title }}" />
+  </a>
+  <p class="infeedl--brand">{{ creative.brand }}</p>
+  <h3 class="infeed--title">
+    <a class="infeedl--link-title" href="{{ creative.link }}" target="_blank" data-infeedl-events-click>
+      {{ creative.title }}
+    </a>
+  </h3>
 </div>

@@ -1,28 +1,51 @@
 describe "creatives", ->
   beforeEach ->
-    @node = document.createElement("div")
-    @node.setAttribute("data-infeedl-placement", "1")
-    document.body.appendChild(@node)
+    @node = Zepto("<div></div>")
+    @node.attr("data-infeedl-placement", "1")
+    document.body.appendChild(@node[0])
 
   afterEach ->
-    document.body.removeChild(@node)
+    document.body.removeChild(@node[0])
 
   describe "article", ->
-    beforeEach ->
-      jasmine.Ajax.stubRequest("/creative?placement_id=1").andReturn(Zepto.extend(
-        AjaxFixtures.common,
-        AjaxFixtures.creative.sample_article
-      ))
-      @placement = new Infeedl.Placement(@node)
-
-    it "renders", ->
-      expect(Zepto(@node)).toContainHtml '<a href="http://advertiser.com/sample-article" target="_blank" data-infeedl-events-click>WOW</a>'
-
-    describe "click", ->
+    describe "fail", ->
       beforeEach ->
-        Zepto(@node).find("[data-infeedl-events-click]").trigger("click")
-        @request = jasmine.Ajax.requests.mostRecent()
+        jasmine.Ajax.stubRequest("/creative?placement_id=1").andReturn(AjaxFixtures.fail)
+        @placement = new Infeedl.Placement(@node[0])
 
-      it "tracks", ->
-        expect(@request.url).toEqual "/event"
-        expect(@request.params).toEqual "events%5Btype%5D=click&events%5Blinks%5D%5Bplacement%5D=1&events%5Blinks%5D%5Bcreative%5D=2"
+      it "hides", ->
+        expect(@node).toBeEmpty()
+        expect(@node).toHaveClass "infeedl--hidden"
+
+    describe "success", ->
+      beforeEach ->
+        jasmine.Ajax.stubRequest("/creative?placement_id=1").andReturn(Zepto.extend(
+          AjaxFixtures.success,
+          AjaxFixtures.creative.sample_article
+        ))
+        @placement = new Infeedl.Placement(@node[0])
+
+      it "renders", ->
+        result = """
+<div class="infeedl--creative infeedl--article">
+  <a class="infeedl--link-image" href="http://advertiser.com/sample-article" target="_blank" data-infeedl-events-click="">
+    <img class="infeedl--image" src="//cdn.infeedl.com/image.jpg" alt="WOW">
+  </a>
+  <p class="infeedl--brand">Supported by Brandname</p>
+  <h3 class="infeed--title">
+    <a class="infeedl--link-title" href="http://advertiser.com/sample-article" target="_blank" data-infeedl-events-click="">
+      WOW
+    </a>
+  </h3>
+</div>
+        """
+        expect(@node).toContainHtml result
+
+      describe "click", ->
+        beforeEach ->
+          @node.find("[data-infeedl-events-click]").trigger("click")
+          @request = jasmine.Ajax.requests.mostRecent()
+
+        it "tracks", ->
+          expect(@request.url).toEqual "/event"
+          expect(@request.params).toEqual "events%5Btype%5D=click&events%5Blinks%5D%5Bplacement%5D=1&events%5Blinks%5D%5Bcreative%5D=2"

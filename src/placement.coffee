@@ -1,8 +1,9 @@
 @Infeedl ||= {}
 
 class @Infeedl.Placement
-  constructor: (@node) ->
-    @id = Zepto(@node).attr("data-infeedl-placement")
+  constructor: (node) ->
+    @node = Zepto(node)
+    @id = @node.attr("data-infeedl-placement")
     @creative = null
 
     @_client = new Infeedl.Client
@@ -22,15 +23,18 @@ class @Infeedl.Placement
       @creative = new Creative(data.creatives)
       @_render()
     ).bind(this)).fail(( ->
-      console?.error(arguments...)
+      @_fail()
     ).bind(this))
 
   _render: ->
-    @node.innerHTML = @creative.render()
+    @node.html(@creative.render())
     @_bind()
 
+  _fail: ->
+    @node.addClass("infeedl--hidden")
+
   _bind: ->
-    Zepto(@node).on("click", "[data-infeedl-events-click]", (->
+    @node.on("click", "[data-infeedl-events-click]", (->
       @_event("click")
       true
     ).bind(this))
