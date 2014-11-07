@@ -1,6 +1,27 @@
 @Infeedl ||= {}
 
 class @Infeedl.Placement
+  @_css: """
+/* VIDEO */
+.infeedl--video .infeedl--link-image {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+}
+
+.infeedl--video .infeedl--link-image::after {
+  display: inline-block;
+  content: "";
+  width: 48px;
+  height: 48px;
+  background: url(//cdn.infeedl.com/shared/creatives/icon-play@2x.png);
+  background-size: 48px 48px;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+  """
+
   constructor: (node) ->
     @node = Zepto(node)
     @id = @node.attr("data-infeedl-placement")
@@ -29,19 +50,23 @@ class @Infeedl.Placement
       @_fail()
     ).bind(this))
 
-  _css: ->
+  _css: (id, stylesheet) ->
+    return if Zepto("##{id}").length > 0
+
     style = document.createElement("style")
+    style.id = id
     style.type = "text/css"
 
     if style.styleSheet
-      style.styleSheet.cssText = @placement.stylesheet
+      style.styleSheet.cssText = stylesheet
     else
-      style.appendChild(document.createTextNode(@placement.stylesheet))
+      style.appendChild(document.createTextNode(stylesheet))
 
     Zepto("head")[0].appendChild(style)
 
   _render: ->
-    @_css()
+    @_css("infeedl-base-stylesheet", @constructor._css)
+    @_css("infeedl-placement-#{@id}-stylesheet", @placement.stylesheet)
     @node.html(@creative.render())
     @_bind()
 

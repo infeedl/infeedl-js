@@ -17,13 +17,32 @@ jasmine.Ajax.install()
           title: "WOW"
           link: "http://advertiser.com/sample-article"
           brand: "Supported by Brandname"
-          image_url: "//cdn.infeedl.com/image.jpg"
+          image_url: "//cdn.infeedl.com/shared/creatives/sample-image.jpg"
         linked:
           placements: {
             id: "00000000-0000-0000-0000-00000000101"
             stylesheet: """
 #infeedl-placement-00000000-0000-0000-0000-00000000101 .infeedl--brand {
-  color: yellow;
+  color: orange;
+}
+            """
+          }
+      )
+    sample_video:
+      responseText: JSON.stringify(
+        creatives:
+          id: "00000000-0000-0000-0000-00000000201"
+          format: "video"
+          title: "WOW"
+          link: "http://advertiser.com/sample-article"
+          brand: "Supported by Brandname"
+          image_url: "//cdn.infeedl.com/shared/creatives/sample-image.jpg"
+        linked:
+          placements: {
+            id: "00000000-0000-0000-0000-00000000101"
+            stylesheet: """
+#infeedl-placement-00000000-0000-0000-0000-00000000101 .infeedl--brand {
+  color: orange;
 }
             """
           }
