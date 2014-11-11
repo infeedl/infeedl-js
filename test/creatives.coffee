@@ -1,7 +1,7 @@
 describe "creatives", ->
   beforeEach ->
     @node = Zepto("<div></div>")
-    @node.attr("data-infeedl-placement", "00000000-0000-0000-0000-00000000101")
+    @node.attr("data-infeedl-placement", "00000000-0000-4000-8000-00000000101")
     document.body.appendChild(@node[0])
 
   afterEach ->
@@ -9,7 +9,7 @@ describe "creatives", ->
 
   describe "hidden", ->
     beforeEach ->
-      jasmine.Ajax.stubRequest("/creative?placement_id=00000000-0000-0000-0000-00000000101").andReturn(AjaxFixtures.fail)
+      jasmine.Ajax.stubRequest("/creative?placement_id=00000000-0000-4000-8000-00000000101").andReturn(AjaxFixtures.fail)
       @placement = new Infeedl.Placement(@node[0])
 
     it "hides", ->
@@ -18,7 +18,7 @@ describe "creatives", ->
 
   describe "article", ->
     beforeEach ->
-      jasmine.Ajax.stubRequest("/creative?placement_id=00000000-0000-0000-0000-00000000101").andReturn(Zepto.extend(
+      jasmine.Ajax.stubRequest("/creative?placement_id=00000000-0000-4000-8000-00000000101").andReturn(Zepto.extend(
         AjaxFixtures.success,
         AjaxFixtures.creative.sample_article
       ))
@@ -41,7 +41,7 @@ describe "creatives", ->
       expect(@node).toContainHtml result
 
     it "styles", ->
-      expect(@node).toHaveId "infeedl-placement-00000000-0000-0000-0000-00000000101"
+      expect(@node).toHaveId "infeedl-placement-00000000-0000-4000-8000-00000000101"
       expect(computedStyle(@node.find(".infeedl--brand"), "color")).toEqual "rgb(255, 165, 0)"
 
     describe "click", ->
@@ -51,11 +51,11 @@ describe "creatives", ->
 
       it "tracks", ->
         expect(@request.url).toEqual "/event"
-        expect(@request.params).toEqual "events%5Btype%5D=click&events%5Blinks%5D%5Bplacement%5D=00000000-0000-0000-0000-00000000101&events%5Blinks%5D%5Bcreative%5D=00000000-0000-0000-0000-00000000201"
+        expect(@request.params).toEqual "events%5Btype%5D=click&events%5Blinks%5D%5Bplacement%5D=00000000-0000-4000-8000-00000000101&events%5Blinks%5D%5Bcreative%5D=00000000-0000-4000-8000-00000000201"
 
   describe "video", ->
     beforeEach ->
-      jasmine.Ajax.stubRequest("/creative?placement_id=00000000-0000-0000-0000-00000000101").andReturn(Zepto.extend(
+      jasmine.Ajax.stubRequest("/creative?placement_id=00000000-0000-4000-8000-00000000101").andReturn(Zepto.extend(
         AjaxFixtures.success,
         AjaxFixtures.creative.sample_video
       ))
@@ -78,5 +78,5 @@ describe "creatives", ->
       expect(@node).toContainHtml result
 
     it "styles", ->
-      expect(@node).toHaveId "infeedl-placement-00000000-0000-0000-0000-00000000101"
+      expect(@node).toHaveId "infeedl-placement-00000000-0000-4000-8000-00000000101"
       expect(computedStyle(@node.find(".infeedl--link-image"), "display")).toEqual "inline-block"

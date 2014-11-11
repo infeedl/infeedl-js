@@ -2,7 +2,7 @@ describe "sample", ->
   beforeEach ->
     location.hash = "#infeedl_sample"
     @node = document.createElement("div")
-    @node.setAttribute("data-infeedl-placement", "00000000-0000-0000-0000-00000000101")
+    @node.setAttribute("data-infeedl-placement", "00000000-0000-4000-8000-00000000101")
     document.body.appendChild(@node)
     @placement = new Infeedl.Placement(@node)
 
@@ -12,4 +12,4 @@ describe "sample", ->
 
   it "renders", ->
     @request = jasmine.Ajax.requests.mostRecent()
-    expect(@request.url).toEqual "/creative?placement_id=00000000-0000-0000-0000-00000000101&sample=true"
+    expect(@request.url).toEqual "/creative?placement_id=00000000-0000-4000-8000-00000000101&sample=true"

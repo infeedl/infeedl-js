@@ -81,7 +81,6 @@ class @Infeedl.Placement
 
   _event: (type) ->
     event = { type: type, links: { placement: @id, creative: @creative.creative.id } }
-
     @_client.post("/event", events: event).done(((data) ->
       # Cool
     ).bind(this)).fail(( ->
