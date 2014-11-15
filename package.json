@@ -2,6 +2,9 @@
   "name": "infeedl-js",
   "version": "1.0.0",
   "private": true,
+  "scripts": {
+    "test": "grunt test"
+  },
   "devDependencies": {
     "grunt": "^0.4.4",
     "hogan.js": "^2.0.0",
