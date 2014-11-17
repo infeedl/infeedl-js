@@ -1,5 +1,8 @@
 module.exports = (grunt) ->
-  secrets = grunt.file.readJSON("secrets.json")
+  secrets = try
+    grunt.file.readJSON("secrets.json")
+  catch e
+    {}
 
   # Configuration
   grunt.initConfig
