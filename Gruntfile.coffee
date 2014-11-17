@@ -131,8 +131,6 @@ module.exports = (grunt) ->
 
               # OS X 10.9
               ["OS X 10.9", "safari", "7"]
-              ["OS X 10.9", "chrome", "33"]
-              ["OS X 10.9", "firefox", "28"]
 
               # Linux
               ["Linux", "chrome", "38"]
@@ -141,13 +139,9 @@ module.exports = (grunt) ->
 
               # Win 8.1
               ["Windows 8.1", "internet explorer", "11"]
-              ["Windows 8.1", "chrome", "38"]
-              ["Windows 8.1", "firefox", "33"]
 
               # Win 8
               ["Windows 8", "internet explorer", "10"]
-              ["Windows 8", "chrome", "38"]
-              ["Windows 8", "firefox", "33"]
 
               # Win 7
               ["Windows 7", "internet explorer", "9"]
@@ -157,9 +151,8 @@ module.exports = (grunt) ->
 
               # Win XP
               ["Windows XP", "internet explorer", "8"]
-              ["Windows XP", "opera", "11"]
             ])
-            url: "https://s3.eu-central-1.amazonaws.com/infeedl/infeedl-js/jasmine/_SpecRunner.html"
+            url: "http://s3.eu-central-1.amazonaws.com/infeedl/infeedl-js/jasmine/_SpecRunner.html"
             framework: "jasmine"
             name: "Infeedl JS"
             concurrency: 5
