@@ -42,7 +42,7 @@ describe "creatives", ->
 
     it "styles", ->
       expect(@node).toHaveId "infeedl-placement-00000000-0000-4000-8000-00000000101"
-      expect(["rgb(255, 165, 0)", "#ffa500"]).toContain computedStyle(@node.find(".infeedl--brand"), "color")
+      expect(["rgb(255, 165, 0)", "#ffa500", "orange"]).toContain computedStyle(@node.find(".infeedl--brand"), "color")
 
     describe "click", ->
       beforeEach ->
