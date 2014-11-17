@@ -15,7 +15,7 @@ jasmine.Ajax.install()
           id: "00000000-0000-4000-8000-00000000201"
           format: "article"
           title: "WOW"
-          link: "http://advertiser.com/sample-article"
+          link: "//cdn.infeedl.com/shared/creatives/self-closing.html"
           brand: "Supported by Brandname"
           image_url: "//cdn.infeedl.com/shared/creatives/sample-image.jpg"
         linked:
@@ -34,7 +34,7 @@ jasmine.Ajax.install()
           id: "00000000-0000-4000-8000-00000000201"
           format: "video"
           title: "WOW"
-          link: "http://advertiser.com/sample-article"
+          link: "//cdn.infeedl.com/shared/creatives/self-closing.html"
           brand: "Supported by Brandname"
           image_url: "//cdn.infeedl.com/shared/creatives/sample-image.jpg"
         linked:
