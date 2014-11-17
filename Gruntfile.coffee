@@ -1,4 +1,6 @@
 module.exports = (grunt) ->
+  secrets = grunt.file.readJSON("secrets.json")
+
   # Configuration
   grunt.initConfig
     # Package information
@@ -68,11 +70,98 @@ module.exports = (grunt) ->
           keepRunner: true
           vendor: [
             "node_modules/zepto/src/zepto.js"
+            "vendor/jasmine-jsreporter.js"
             "test/helpers.js"
             "node_modules/jasmine-jquery/lib/jasmine-jquery.js"
             "node_modules/jasmine-ajax/lib/mock-ajax.js"
           ]
           specs: "test/tests.js"
+
+    # S3
+    aws_s3:
+      options:
+        accessKeyId: secrets.AWS_KEY || process.env.AWS_KEY
+        secretAccessKey: secrets.AWS_SECRET || process.env.AWS_SECRET
+        region: "eu-central-1"
+      jasmine:
+        options:
+          bucket: "infeedl"
+          differential: true
+        files: [
+          { expand: true, src: ["_SpecRunner.html"], dest: "infeedl-js/jasmine" }
+          { expand: true, cwd: ".grunt", src: ["**"], dest: "infeedl-js/jasmine/.grunt" }
+          { expand: true, cwd: "dist", src: ["**"], dest: "infeedl-js/jasmine/dist" }
+          { expand: true, cwd: "test", src: ["**"], dest: "infeedl-js/jasmine/test" }
+
+          # TODO: Fetch this list
+          { expand: true, src: ["node_modules/zepto/src/zepto.js"], dest: "infeedl-js/jasmine" }
+          { expand: true, src: ["node_modules/jasmine-jquery/lib/jasmine-jquery.js"], dest: "infeedl-js/jasmine" }
+          { expand: true, src: ["node_modules/jasmine-ajax/lib/mock-ajax.js"], dest: "infeedl-js/jasmine" }
+          { expand: true, src: ["vendor/jasmine-jsreporter.js"], dest: "infeedl-js/jasmine" }
+        ]
+
+    # Saucelabs
+    http:
+      jasmine:
+        options:
+          url: "https://saucelabs.com/rest/v1/infeedl/js-tests"
+          method: "POST"
+          auth:
+            username: "infeedl"
+            password: secrets.SAUCELABS_SECRET || process.env.SAUCELABS_SECRET
+          form:
+            platforms: JSON.stringify([
+              # iOS
+              ["OS X 10.9", "iphone", "8.1"]
+              ["OS X 10.9", "iphone", "8.0"]
+              ["OS X 10.9", "ipad", "7.1"]
+              ["OS X 10.9", "ipad", "7.0"]
+
+              # Android
+              ["Linux", "android", "4.4"]
+              ["Linux", "android", "4.3"]
+
+              # OS X 10.10
+              ["OS X 10.10", "safari", "8"]
+              ["OS X 10.10", "chrome", "38"]
+              ["OS X 10.10", "firefox", "33"]
+
+              # OS X 10.9
+              ["OS X 10.9", "safari", "7"]
+              ["OS X 10.9", "chrome", "33"]
+              ["OS X 10.9", "firefox", "28"]
+
+              # Linux
+              ["Linux", "chrome", "38"]
+              ["Linux", "firefox", "33"]
+              ["Linux", "opera", "12"]
+
+              # Win 8.1
+              ["Windows 8.1", "internet explorer", "11"]
+              ["Windows 8.1", "chrome", "38"]
+              ["Windows 8.1", "firefox", "33"]
+
+              # Win 8
+              ["Windows 8", "internet explorer", "10"]
+              ["Windows 8", "chrome", "38"]
+              ["Windows 8", "firefox", "33"]
+
+              # Win 7
+              ["Windows 7", "internet explorer", "9"]
+              ["Windows 7", "chrome", "38"]
+              ["Windows 7", "firefox", "33"]
+              ["Windows 7", "opera", "12"]
+
+              # Win XP
+              ["Windows XP", "internet explorer", "8"]
+              ["Windows XP", "opera", "11"]
+            ])
+            url: "https://s3.eu-central-1.amazonaws.com/infeedl/infeedl-js/jasmine/_SpecRunner.html"
+            framework: "jasmine"
+            name: "Infeedl JS"
+            concurrency: 5
+            build: process.env.TRAVIS_JOB_ID || "unknown"
+
 
   # Load tasks from plugins
   grunt.loadNpmTasks "grunt-contrib-coffee"
@@ -80,12 +169,17 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-concat"
   grunt.loadNpmTasks "grunt-contrib-uglify"
   grunt.loadNpmTasks "grunt-contrib-jasmine"
+  grunt.loadNpmTasks "grunt-aws-s3"
+  grunt.loadNpmTasks "grunt-http"
 
   # Build
   grunt.registerTask "build", ["coffee", "hogan", "concat", "uglify"]
 
   # Test
   grunt.registerTask "test", ["build", "jasmine"]
+
+  # SauseLabs
+  grunt.registerTask "saucelabs", ["aws_s3:jasmine", "http:jasmine"]
 
   # Deploy
   grunt.registerTask "deploy", ["test"]

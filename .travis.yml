@@ -1,6 +1,12 @@
 language: node_js
 node_js:
-  - 0.10
+  - "0.10"
+env:
+  global:
+  - secure: Ys74p8mSE8qi7D1fe0AJAveON8cjq1hFTUXmi4p27iiGLQ/XzmO/y/G+UC/eU8E0PxXGOZ1KXTGpunswgMC7fw4rfTam1l1c3nCBU52NsoT0GLAipjoOb53dUk8Z/aPEzwZ7eahbOlriwLPZ9xGdd5leSbSlWWFJ/f0q/5bMeeI=
+  - secure: fXOW6lobcYBF/gAp13aqFkUIjEzqI2geLUHDgzGjcmg+EkQcObzNCXP/lwcNMrh+nu69LFsX7T4KJL8OCrg94kYXl8JpYHgKCW7Hdyry1OoTRh70tobpH+3es0HlX2zTZXqCA1rBIW3U9vNFhW0SOvEToPkKViDAXgkEpiSzAxI=
+  - secure: RABlSo6VtHKTwfazNOfzljidZDkYXLxMNYpSdipsEoqbKgb3Gz+GpzcYt/jE0D6IMPpnm2mw9iBHvVdZ5f2CrUkLFZTvYCmBPlpF4oY0fugLcGYosfas2GK9qqc6czaTNWUz69KP/Txg78PdfJ79eTKYRtkQFCvYfZhiaJlqN14=
 before_install: npm install -g grunt-cli
 install: npm install
 before_script: grunt test
+after_success: grunt saucelabs
