@@ -45,11 +45,7 @@ module.exports = (grunt) ->
       infeedl:
         src: [
           "node_modules/hogan.js/lib/template.js"
-          "node_modules/zepto/src/zepto.js"
-          "node_modules/zepto/src/event.js"
-          "node_modules/zepto/src/callbacks.js"
-          "node_modules/zepto/src/deferred.js"
-          "node_modules/zepto/src/ajax.js"
+          "vendor/jquery.js"
           "src/templates.js"
           "src/infeedl.js"
         ]
@@ -72,7 +68,7 @@ module.exports = (grunt) ->
         options:
           keepRunner: true
           vendor: [
-            "node_modules/zepto/src/zepto.js"
+            "vendor/jquery.js"
             "vendor/jasmine-jsreporter.js"
             "test/helpers.js"
             "node_modules/jasmine-jquery/lib/jasmine-jquery.js"
@@ -97,10 +93,10 @@ module.exports = (grunt) ->
           { expand: true, cwd: "test", src: ["**"], dest: "infeedl-js/jasmine/test" }
 
           # TODO: Fetch this list
-          { expand: true, src: ["node_modules/zepto/src/zepto.js"], dest: "infeedl-js/jasmine" }
+          { expand: true, src: ["vendor/jquery.js"], dest: "infeedl-js/jasmine" }
+          { expand: true, src: ["vendor/jasmine-jsreporter.js"], dest: "infeedl-js/jasmine" }
           { expand: true, src: ["node_modules/jasmine-jquery/lib/jasmine-jquery.js"], dest: "infeedl-js/jasmine" }
           { expand: true, src: ["node_modules/jasmine-ajax/lib/mock-ajax.js"], dest: "infeedl-js/jasmine" }
-          { expand: true, src: ["vendor/jasmine-jsreporter.js"], dest: "infeedl-js/jasmine" }
         ]
 
     # Saucelabs
@@ -148,9 +144,6 @@ module.exports = (grunt) ->
               ["Windows 7", "chrome", "38"]
               ["Windows 7", "firefox", "33"]
               ["Windows 7", "opera", "12"]
-
-              # Win XP
-              ["Windows XP", "internet explorer", "8"]
             ])
             url: "http://s3.eu-central-1.amazonaws.com/infeedl/infeedl-js/jasmine/_SpecRunner.html"
             framework: "jasmine"

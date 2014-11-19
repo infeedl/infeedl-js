@@ -1,5 +1,3 @@
-window.jQuery = window.Zepto
-
 computedStyle = (elem, prop) ->
   if elem[0].currentStyle
     return elem[0].currentStyle[prop]

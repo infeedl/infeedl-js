@@ -23,7 +23,7 @@ class @Infeedl.Placement
   """
 
   constructor: (node) ->
-    @node = Zepto(node)
+    @node = Infeedl.$(node)
     @id = @node.attr("data-infeedl-placement")
     @creative = null
     @placement = null
@@ -37,7 +37,7 @@ class @Infeedl.Placement
 
   _retrieve: ->
     params = { placement_id: @id }
-    params = Zepto.extend(params, sample: true) if @_sample()
+    params = Infeedl.$.extend(params, sample: true) if @_sample()
 
     @_client.get("/creative", params).done(((data) ->
       format = data.creatives.format
@@ -51,7 +51,7 @@ class @Infeedl.Placement
     ).bind(this))
 
   _css: (id, stylesheet) ->
-    return if Zepto("##{id}").length > 0
+    return if Infeedl.$("##{id}").length > 0
 
     style = document.createElement("style")
     style.id = id
@@ -62,7 +62,7 @@ class @Infeedl.Placement
     else
       style.appendChild(document.createTextNode(stylesheet))
 
-    Zepto("head")[0].appendChild(style)
+    Infeedl.$("head")[0].appendChild(style)
 
   _render: ->
     @_css("infeedl-base-stylesheet", @constructor._css)

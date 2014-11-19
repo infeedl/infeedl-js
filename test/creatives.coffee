@@ -1,6 +1,6 @@
 describe "creatives", ->
   beforeEach ->
-    @node = Zepto("<div></div>")
+    @node = $("<div></div>")
     @node.attr("data-infeedl-placement", "00000000-0000-4000-8000-00000000101")
     document.body.appendChild(@node[0])
 
@@ -18,7 +18,7 @@ describe "creatives", ->
 
   describe "article", ->
     beforeEach ->
-      jasmine.Ajax.stubRequest("/creative?placement_id=00000000-0000-4000-8000-00000000101").andReturn(Zepto.extend(
+      jasmine.Ajax.stubRequest("/creative?placement_id=00000000-0000-4000-8000-00000000101").andReturn($.extend(
         AjaxFixtures.success,
         AjaxFixtures.creative.sample_article
       ))
@@ -46,7 +46,7 @@ describe "creatives", ->
 
     describe "click", ->
       beforeEach ->
-        @node.find("[data-infeedl-events-click]").trigger("click")
+        Infeedl.$("[data-infeedl-events-click]").trigger("click")
         @request = jasmine.Ajax.requests.mostRecent()
 
       it "tracks", ->
@@ -55,7 +55,7 @@ describe "creatives", ->
 
   describe "video", ->
     beforeEach ->
-      jasmine.Ajax.stubRequest("/creative?placement_id=00000000-0000-4000-8000-00000000101").andReturn(Zepto.extend(
+      jasmine.Ajax.stubRequest("/creative?placement_id=00000000-0000-4000-8000-00000000101").andReturn($.extend(
         AjaxFixtures.success,
         AjaxFixtures.creative.sample_video
       ))
