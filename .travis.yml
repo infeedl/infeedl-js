@@ -1,14 +1,12 @@
 language: node_js
 node_js:
   - "0.10"
+sudo: false
 env:
   global:
-  - secure: Ys74p8mSE8qi7D1fe0AJAveON8cjq1hFTUXmi4p27iiGLQ/XzmO/y/G+UC/eU8E0PxXGOZ1KXTGpunswgMC7fw4rfTam1l1c3nCBU52NsoT0GLAipjoOb53dUk8Z/aPEzwZ7eahbOlriwLPZ9xGdd5leSbSlWWFJ/f0q/5bMeeI=
-  - secure: fXOW6lobcYBF/gAp13aqFkUIjEzqI2geLUHDgzGjcmg+EkQcObzNCXP/lwcNMrh+nu69LFsX7T4KJL8OCrg94kYXl8JpYHgKCW7Hdyry1OoTRh70tobpH+3es0HlX2zTZXqCA1rBIW3U9vNFhW0SOvEToPkKViDAXgkEpiSzAxI=
-  - secure: RABlSo6VtHKTwfazNOfzljidZDkYXLxMNYpSdipsEoqbKgb3Gz+GpzcYt/jE0D6IMPpnm2mw9iBHvVdZ5f2CrUkLFZTvYCmBPlpF4oY0fugLcGYosfas2GK9qqc6czaTNWUz69KP/Txg78PdfJ79eTKYRtkQFCvYfZhiaJlqN14=
   - secure: IU/QvZF23o09OLh8LJ9lu+2oZq7P81n7TcWWQ49VOWs7SkWAlVyhGcMeZ9z3Zl4bBaQW7jmjqWmbghFJN+q0XNn5PG/nw0SDGxlz+1pGaGmcc/rUGmOwywBNoqX2ag93/oBz0IHgaWCcn4Pj/pax91NlUjsuTUCMlpS0zravqMU=
   - secure: OrHIql9/GHFdcBcBYLheJU87QzloC2El7CG5xlL0zGkcmUiZvPA8pOFGVVnrTnuGU5Zu2BzC7qDKYMsJXM8aMiGSvfK6Afq5O1LnwJOD0Qcbf9S98iytQDxXuO05lFnLHZwJUS3C6naFN+8ZwEu4o7t8fK6ULQeANY3CragONQI=
+  - secure: RABlSo6VtHKTwfazNOfzljidZDkYXLxMNYpSdipsEoqbKgb3Gz+GpzcYt/jE0D6IMPpnm2mw9iBHvVdZ5f2CrUkLFZTvYCmBPlpF4oY0fugLcGYosfas2GK9qqc6czaTNWUz69KP/Txg78PdfJ79eTKYRtkQFCvYfZhiaJlqN14=
 before_install: npm install -g grunt-cli
 install: npm install
-before_script: grunt test
 after_success: grunt saucelabs
