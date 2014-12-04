@@ -23,10 +23,10 @@ jasmine.Ajax.install()
             description: null
         linked:
           placements: {
-            id: "00000000-0000-4000-8000-00000000101"
+            id: "00000000-0000-4000-8000-000000000101"
             appearance: "horizontal",
             stylesheet: """
-#infeedl-placement-00000000-0000-4000-8000-00000000101 .infeedl--brand {
+#infeedl-placement-00000000-0000-4000-8000-000000000101 .infeedl--brand {
   color: orange;
 }
             """
@@ -46,10 +46,10 @@ jasmine.Ajax.install()
             description: null
         linked:
           placements: {
-            id: "00000000-0000-4000-8000-00000000101"
+            id: "00000000-0000-4000-8000-000000000101"
             appearance: "horizontal",
             stylesheet: """
-#infeedl-placement-00000000-0000-4000-8000-00000000101 .infeedl--brand {
+#infeedl-placement-00000000-0000-4000-8000-000000000101 .infeedl--brand {
   color: orange;
 }
             """
