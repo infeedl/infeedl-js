@@ -64,12 +64,12 @@ describe "creatives", ->
     it "renders", ->
       result = """
 <div class="infeedl--creative infeedl--video">
-  <a class="infeedl--link-image" href="//cdn.infeedl.com/shared/creatives/self-closing.html" target="_blank" data-infeedl-events-click="">
+  <a class="infeedl--link-image" href="https://www.youtube.com/watch?v=Jo49pot_RMo" target="_blank" data-infeedl-events-click="">
     <img class="infeedl--image" src="//cdn.infeedl.com/shared/creatives/sample-image.jpg" alt="WOW">
   </a>
   <p class="infeedl--brand">Supported by Brandname</p>
   <h3 class="infeed--title">
-    <a class="infeedl--link-title" href="//cdn.infeedl.com/shared/creatives/self-closing.html" target="_blank" data-infeedl-events-click="">
+    <a class="infeedl--link-title" href="https://www.youtube.com/watch?v=Jo49pot_RMo" target="_blank" data-infeedl-events-click="">
       WOW
     </a>
   </h3>

@@ -15,9 +15,12 @@ jasmine.Ajax.install()
           id: "00000000-0000-4000-8000-00000000201"
           format: "article"
           title: "WOW"
-          link: "//cdn.infeedl.com/shared/creatives/self-closing.html"
           brand: "Supported by Brandname"
           picture: "//cdn.infeedl.com/shared/creatives/sample-image.jpg"
+          content:
+            id: "00000000-0000-4000-8000-000000000401"
+            url: "//cdn.infeedl.com/shared/creatives/self-closing.html"
+            description: null
         linked:
           placements: {
             id: "00000000-0000-4000-8000-00000000101"
@@ -34,9 +37,12 @@ jasmine.Ajax.install()
           id: "00000000-0000-4000-8000-00000000201"
           format: "video"
           title: "WOW"
-          link: "//cdn.infeedl.com/shared/creatives/self-closing.html"
           brand: "Supported by Brandname"
           picture: "//cdn.infeedl.com/shared/creatives/sample-image.jpg"
+          content:
+            id: "00000000-0000-4000-8000-000000000402"
+            url: "https://www.youtube.com/watch?v=Jo49pot_RMo"
+            description: null
         linked:
           placements: {
             id: "00000000-0000-4000-8000-00000000101"
