@@ -50,7 +50,7 @@ describe "creatives", ->
         @request = jasmine.Ajax.requests.mostRecent()
 
       it "tracks", ->
-        expect(@request.url).toEqual "/event"
+        expect(@request.url).toEqual "/events"
         expect(@request.params).toEqual "events%5Btype%5D=click&events%5Blinks%5D%5Bplacement%5D=00000000-0000-4000-8000-000000000101&events%5Blinks%5D%5Bcreative%5D=00000000-0000-4000-8000-00000000201"
 
   describe "video", ->
