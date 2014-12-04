@@ -43,8 +43,8 @@ class @Infeedl.Placement
       format = data.creatives.format
       Creative = Infeedl.Creatives["#{format.charAt(0).toUpperCase()}#{format.slice(1)}"]
 
-      @creative = new Creative(data.creatives)
       @placement = data.linked.placements
+      @creative = new Creative(data.creatives, @placement)
       @_render()
     ).bind(this)).fail(( ->
       @_fail()
@@ -67,7 +67,7 @@ class @Infeedl.Placement
   _render: ->
     @_css("infeedl-base-stylesheet", @constructor._css)
     @_css("infeedl-placement-#{@id}-stylesheet", @placement.stylesheet)
-    @node.html(@creative.render())
+    @node.html(@creative.render(@placement))
     @_bind()
 
   _fail: ->
