@@ -79,4 +79,4 @@ describe "creatives", ->
 
     it "styles", ->
       expect(@node).toHaveId "infeedl-placement-00000000-0000-4000-8000-000000000101"
-      expect(computedStyle(@node.find(".infeedl--link-image"), "display")).toEqual "inline-block"
+      expect(computedStyle(@node.find(".infeedl--link-image"), "display")).toEqual "block"
