@@ -2,9 +2,46 @@
 
 class @Infeedl.Placement
   @_css: """
+/* COMMON */
+.infeedl--creative:before, .infeedl--creative:after {
+  display: table;
+  content: " ";
+}
+
+.infeedl--creative:after {
+  clear: both;
+}
+
+.infeedl--creative .infeedl--link-image {
+  display: block;
+}
+
+.infeedl--creative .infeedl--link-image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.infeedl--creative .infeedl--brand {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 0;
+  background: #FFA60D;
+}
+
+.infeedl--creative .infeedl--title {
+  margin: 15px 0 0 0;
+  padding: 0;
+  font-size: 150%;
+}
+
+.infeedl--creative .infeedl--title .infeedl--link-title,
+.infeedl--creative .infeedl--title .infeedl--link-title:hover {
+  color: #000;
+}
+
 /* VIDEO */
 .infeedl--video .infeedl--link-image {
-  display: inline-block;
   position: relative;
   text-decoration: none;
 }
@@ -17,8 +54,39 @@ class @Infeedl.Placement
   background: url(//cdn.infeedl.com/shared/creatives/icon-play@2x.png);
   background-size: 48px 48px;
   position: absolute;
-  bottom: 15px;
-  left: 15px;
+  bottom: 10px;
+  left: 10px;
+}
+
+/* HORIZONTAL */
+.infeedl--appearance--horizontal {
+  padding: 10px 15px;
+  background: #FFF;
+  border: 1px solid #FFA60D;
+  border-radius: 5px;
+}
+
+.infeedl--appearance--horizontal .infeedl--link-image {
+  float: left;
+  max-width: 20%;
+  margin-right: 15px;
+}
+
+.infeedl--appearance--horizontal.infeedl--video .infeedl--link-image::after {
+  width: 32px;
+  height: 32px;
+  background-size: 32px;
+}
+
+/* SQUARE, VERTICAL */
+.infeedl--appearance--square .infeedl--title,
+.infeedl--appearance--vertical .infeedl--title {
+  margin-bottom: 15px;
+}
+
+.infeedl--appearance--square .infeedl--link-image,
+.infeedl--appearance--vertical .infeedl--link-image {
+  margin-bottom: 15px;
 }
   """
 

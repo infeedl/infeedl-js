@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+  <title>INFEEDL</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <br />
+    <div role="tabpanel">
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#horizontal" aria-controls="horizontal" role="tab" data-toggle="tab">Horizontal</a></li>
+        <li role="presentation"><a href="#square" aria-controls="square" role="tab" data-toggle="tab">Square</a></li>
+        <li role="presentation"><a href="#vertical" aria-controls="vertical" role="tab" data-toggle="tab">Vertical</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="horizontal">
+          <div class="row">
+            <div class="col-sm-9">
+              <h1>Content</h1>
+
+              <div data-placement="00000000-0000-4000-8000-000000000101"></div>
+            </div>
+            <div class="col-sm-3">
+              <h1>Sidebar</h1>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="square">
+          <div class="row">
+            <div class="col-sm-9">
+              <h1>Content</h1>
+
+              <div class="row">
+                <div class="col-sm-4">
+                  <div data-placement="00000000-0000-4000-8000-000000000111"></div>
+                </div>
+                <div class="col-sm-4">
+                  <div data-placement="00000000-0000-4000-8000-000000000111"></div>
+                </div>
+                <div class="col-sm-4">
+                  <div data-placement="00000000-0000-4000-8000-000000000111"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <h1>Sidebar</h1>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="vertical">
+          <div class="row">
+            <div class="col-sm-9">
+              <h1>Content</h1>
+            </div>
+            <div class="col-sm-3">
+              <h1>Sidebar</h1>
+
+              <div data-placement="00000000-0000-4000-8000-000000000121"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/dist/infeedl.js"></script>
+  <script>
+    $ = Infeedl.$
+    location.hash = "#infeedl_sample"
+    Infeedl.Client._base = "http://api.infeedl.dev"
+
+    $("[data-placement]").each(function() {
+      $(this).attr("data-infeedl-placement", $(this).attr("data-placement"))
+    })
+
+    Infeedl.init()
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

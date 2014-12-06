@@ -31,11 +31,11 @@ describe "creatives", ->
     <img class="infeedl--image" src="//cdn.infeedl.com/shared/creatives/sample-image.jpg" alt="WOW">
   </a>
   <p class="infeedl--brand">Supported by Brandname</p>
-  <h3 class="infeed--title">
+  <h2 class="infeedl--title">
     <a class="infeedl--link-title" href="//cdn.infeedl.com/shared/creatives/self-closing.html" target="_blank" data-infeedl-events-click="">
       WOW
     </a>
-  </h3>
+  </h2>
 </div>
       """
       expect(@node).toContainHtml result
@@ -68,11 +68,11 @@ describe "creatives", ->
     <img class="infeedl--image" src="//cdn.infeedl.com/shared/creatives/sample-image.jpg" alt="WOW">
   </a>
   <p class="infeedl--brand">Supported by Brandname</p>
-  <h3 class="infeed--title">
+  <h2 class="infeedl--title">
     <a class="infeedl--link-title" href="https://www.youtube.com/watch?v=Jo49pot_RMo" target="_blank" data-infeedl-events-click="">
       WOW
     </a>
-  </h3>
+  </h2>
 </div>
       """
       expect(@node).toContainHtml result
