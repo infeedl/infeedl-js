@@ -9,4 +9,4 @@ env:
   - secure: RABlSo6VtHKTwfazNOfzljidZDkYXLxMNYpSdipsEoqbKgb3Gz+GpzcYt/jE0D6IMPpnm2mw9iBHvVdZ5f2CrUkLFZTvYCmBPlpF4oY0fugLcGYosfas2GK9qqc6czaTNWUz69KP/Txg78PdfJ79eTKYRtkQFCvYfZhiaJlqN14=
 before_install: npm install -g grunt-cli
 install: npm install
-after_success: grunt saucelabs
+after_success: grunt saucelabs && grunt deploy

@@ -98,6 +98,13 @@ module.exports = (grunt) ->
           { expand: true, src: ["node_modules/jasmine-jquery/lib/jasmine-jquery.js"], dest: "infeedl-js/jasmine" }
           { expand: true, src: ["node_modules/jasmine-ajax/lib/mock-ajax.js"], dest: "infeedl-js/jasmine" }
         ]
+      deploy:
+        options:
+          bucket: "infeedl"
+          differential: true
+        files: [
+          { expand: true, cwd: "dist", src: ["*"], dest: "js" }
+        ]
 
     # Saucelabs
     http:
@@ -171,7 +178,7 @@ module.exports = (grunt) ->
   grunt.registerTask "saucelabs", ["aws_s3:jasmine", "http:jasmine"]
 
   # Deploy
-  grunt.registerTask "deploy", ["test"]
+  grunt.registerTask "deploy", ["test", "aws_s3:deploy"]
 
   # Default meta-task
   grunt.registerTask "default", ["build"]
