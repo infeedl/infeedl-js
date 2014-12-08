@@ -19,8 +19,9 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000
           brand: "Supported by Brandname"
           picture: "//cdn.infeedl.com/shared/creatives/sample-image.jpg"
           content:
-            embedded: false
             location: "//cdn.infeedl.com/shared/creatives/self-closing.html"
+            embedded: false
+            embedded_location: "//cdn.infeedl.com/shared/creatives/self-closing.html"
         linked:
           placements: {
             id: "00000000-0000-4000-8000-000000000101"
@@ -41,9 +42,10 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000
           brand: "Supported by Brandname"
           picture: "//cdn.infeedl.com/shared/creatives/sample-image.jpg"
           content:
+            location: "//cdn.infeedl.com/shared/creatives/self-closing.html"
             embedded: true
             # FIXME: protocol-less URL doesn't work in Phantom
-            location: "http://cdn.infeedl.com/shared/creatives/self-closing-embedded.html"
+            embedded_location: "http://cdn.infeedl.com/shared/creatives/self-closing-embedded.html"
         linked:
           placements: {
             id: "00000000-0000-4000-8000-000000000101"

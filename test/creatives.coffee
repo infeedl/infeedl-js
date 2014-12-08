@@ -64,12 +64,12 @@ describe "creatives", ->
     it "renders", ->
       result = """
 <div class="infeedl--creative infeedl--video infeedl--appearance--horizontal">
-  <a class="infeedl--link-image" href="http://cdn.infeedl.com/shared/creatives/self-closing-embedded.html" target="_blank" data-infeedl-events-click="">
+  <a class="infeedl--link-image" href="//cdn.infeedl.com/shared/creatives/self-closing.html" target="_blank" data-infeedl-events-click="">
     <img class="infeedl--image" src="//cdn.infeedl.com/shared/creatives/sample-image.jpg" alt="WOW">
   </a>
   <p class="infeedl--brand">Supported by Brandname</p>
   <h2 class="infeedl--title">
-    <a class="infeedl--link-title" href="http://cdn.infeedl.com/shared/creatives/self-closing-embedded.html" target="_blank" data-infeedl-events-click="">
+    <a class="infeedl--link-title" href="//cdn.infeedl.com/shared/creatives/self-closing.html" target="_blank" data-infeedl-events-click="">
       WOW
     </a>
   </h2>
@@ -101,6 +101,8 @@ describe "creatives", ->
         it "appends embedded and loader", (done) ->
           expect($("body")).toContainElement ".infeedl--embedded"
           expect($("body")).toContainElement ".infeedl--embedded--loader"
+
+          expect($(".infeedl--embedded")).toHaveAttr "src", "http://cdn.infeedl.com/shared/creatives/self-closing-embedded.html"
 
           @interval = setInterval((->
             return done() if $(".infeedl--embedded").length == 0

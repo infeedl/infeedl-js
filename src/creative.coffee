@@ -19,7 +19,7 @@ class @Infeedl.Creative
     Infeedl.$("body")[0].appendChild(@loader)
 
     @iframe = document.createElement("iframe")
-    @iframe.setAttribute("src", @creative.content.location)
+    @iframe.setAttribute("src", @creative.content.embedded_location)
     @iframe.setAttribute("frameBorder", "0")
     @iframe.setAttribute("allowtransparency", "true")
     @iframe.setAttribute("class", "infeedl--embedded")
