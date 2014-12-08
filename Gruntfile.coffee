@@ -179,7 +179,7 @@ module.exports = (grunt) ->
   grunt.registerTask "saucelabs", ["aws_s3:jasmine", "http:jasmine"]
 
   # Deploy
-  grunt.registerTask "deploy", ["test", "aws_s3:deploy"]
+  grunt.registerTask "deploy", ["aws_s3:deploy"]
 
   # Default meta-task
   grunt.registerTask "default", ["build"]

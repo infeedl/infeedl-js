@@ -86,23 +86,39 @@ describe "creatives", ->
         Infeedl.$("[data-infeedl-events-click]:first").trigger("click")
         @request = jasmine.Ajax.requests.mostRecent()
 
-      it "tracks", ->
+      afterEach ->
+        clearInterval(@interval)
+
+      it "tracks", (done) ->
         expect(@request.url).toEqual "/events"
         expect(@request.params).toEqual "events%5Btype%5D=click&events%5Blinks%5D%5Bplacement%5D=00000000-0000-4000-8000-000000000101&events%5Blinks%5D%5Bcreative%5D=00000000-0000-4000-8000-00000000201"
 
+        @interval = setInterval((->
+          return done() if $(".infeedl--embedded").length == 0
+        ).bind(this), 300)
+
       describe "lifecycle", ->
-        it "appends embedded and loader", ->
+        it "appends embedded and loader", (done) ->
           expect($("body")).toContainElement ".infeedl--embedded"
           expect($("body")).toContainElement ".infeedl--embedded--loader"
 
+          @interval = setInterval((->
+            return done() if $(".infeedl--embedded").length == 0
+          ).bind(this), 300)
+
         it "removes loader", (done) ->
-          setTimeout((->
-            expect($("body")).not.toContainElement ".infeedl--embedded--loader"
-            done()
-          ).bind(this), 3000)
+          checked = false
+          @interval = setInterval((->
+            return done() if checked && $(".infeedl--embedded").length == 0
+
+            if $(".infeedl--embedded--loader").length == 0
+              expect($("body")).toContainElement ".infeedl--embedded"
+              checked = true
+          ).bind(this), 300)
 
         it "removes embedded", (done) ->
-          setTimeout((->
-            expect($("body")).not.toContainElement ".infeedl--embedded"
-            done()
-          ).bind(this), 6000)
+          @interval = setInterval((->
+            if $(".infeedl--embedded").length == 0
+              expect($("body")).not.toContainElement ".infeedl--embedded--loader"
+              done()
+          ).bind(this), 300)
