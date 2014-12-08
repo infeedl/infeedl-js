@@ -286,6 +286,11 @@
     spec.skipped = spec.status === 'pending';
     spec.passed = spec.skipped || spec.status === 'passed';
 
+    // PATCH
+    if(!spec.passedExpectations) {
+      spec.passedExpectations = [];
+    }
+
     spec.totalCount = spec.passedExpectations.length + spec.failedExpectations.length;
     spec.passedCount = spec.passedExpectations.length;
     spec.failedCount = spec.failedExpectations.length;

@@ -88,6 +88,24 @@ class @Infeedl.Placement
 .infeedl--appearance--vertical .infeedl--link-image {
   margin-bottom: 15px;
 }
+
+/* OVERLAY */
+.infeedl--embedded, .infeedl--embedded--loader {
+  display: block;
+  position: absolute;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2147483645;
+}
+
+.infeedl--embedded--loader {
+  background: rgba(255, 255, 255, .5) url(//cdn.infeedl.com/shared/creatives/loader.gif) no-repeat center center;
+}
   """
 
   constructor: (node) ->
@@ -108,11 +126,8 @@ class @Infeedl.Placement
     params = Infeedl.$.extend(params, sample: true) if @_sample()
 
     @_client.get("/creative", params).done(((data) ->
-      format = data.creatives.format
-      Creative = Infeedl.Creatives["#{format.charAt(0).toUpperCase()}#{format.slice(1)}"]
-
       @placement = data.linked.placements
-      @creative = new Creative(data.creatives, @placement)
+      @creative = new Infeedl.Creative(data.creatives.format, data.creatives, @placement)
       @_render()
     ).bind(this)).fail(( ->
       @_fail()
@@ -142,9 +157,9 @@ class @Infeedl.Placement
     @node.addClass("infeedl--hidden")
 
   _bind: ->
-    @node.on("click", "[data-infeedl-events-click]", (->
+    @node.on("click", "[data-infeedl-events-click]", ((evt) ->
       @_event("click")
-      true
+      @creative.click(evt)
     ).bind(this))
 
   _event: (type) ->

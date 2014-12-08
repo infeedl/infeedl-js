@@ -1,5 +1,6 @@
 Infeedl.Client._base = ""
 jasmine.Ajax.install()
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000
 
 @AjaxFixtures =
   success:
@@ -18,9 +19,8 @@ jasmine.Ajax.install()
           brand: "Supported by Brandname"
           picture: "//cdn.infeedl.com/shared/creatives/sample-image.jpg"
           content:
-            id: "00000000-0000-4000-8000-000000000401"
-            url: "//cdn.infeedl.com/shared/creatives/self-closing.html"
-            description: null
+            embedded: false
+            location: "//cdn.infeedl.com/shared/creatives/self-closing.html"
         linked:
           placements: {
             id: "00000000-0000-4000-8000-000000000101"
@@ -41,9 +41,9 @@ jasmine.Ajax.install()
           brand: "Supported by Brandname"
           picture: "//cdn.infeedl.com/shared/creatives/sample-image.jpg"
           content:
-            id: "00000000-0000-4000-8000-000000000402"
-            url: "https://www.youtube.com/watch?v=Jo49pot_RMo"
-            description: null
+            embedded: true
+            # FIXME: protocol-less URL doesn't work in Phantom
+            location: "http://cdn.infeedl.com/shared/creatives/self-closing-embedded.html"
         linked:
           placements: {
             id: "00000000-0000-4000-8000-000000000101"
