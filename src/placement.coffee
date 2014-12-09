@@ -26,7 +26,7 @@ class @Infeedl.Placement
   display: inline-block;
   padding: 5px 10px;
   margin: 0;
-  background: #FFA60D;
+  background: #ffa60d;
 }
 
 .infeedl--creative .infeedl--title {
@@ -61,7 +61,7 @@ class @Infeedl.Placement
 /* HORIZONTAL */
 .infeedl--appearance--horizontal {
   padding: 10px 15px;
-  background: #FFF;
+  background: #fff;
   border: 1px solid #FFA60D;
   border-radius: 5px;
 }
