@@ -104,7 +104,7 @@ class @Infeedl.Placement
 }
 
 .infeedl--embedded--loader {
-  background: rgba(255, 255, 255, .5) url(//cdn.infeedl.com/shared/creatives/loader.gif) no-repeat center center;
+  background: rgba(0, 0, 0, .8) url(//cdn.infeedl.com/shared/creatives/loader.svg) no-repeat center center;
 }
   """
 
