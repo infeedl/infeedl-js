@@ -113,6 +113,7 @@ class @Infeedl.Placement
     @id = @node.attr("data-infeedl-placement")
     @creative = null
     @placement = null
+    @viewed = false
 
     @node.attr("id", "infeedl-placement-#{@id}")
     @_client = new Infeedl.Client
@@ -157,10 +158,20 @@ class @Infeedl.Placement
     @node.addClass("infeedl--hidden")
 
   _bind: ->
+    # Set up polling for visibility
+    @interval = setInterval(@_visible.bind(this), 1000)
+
+    # Clicking on clickable elements
     @node.on("click", "[data-infeedl-events-click]", ((evt) ->
       @_event("click")
       @creative.click(evt)
     ).bind(this))
+
+  _visible: ->
+    if !@viewed && @node.is(":in-viewport")
+      clearInterval(@interval) if @interval
+      @viewed = true
+      @_event("view")
 
   _event: (type) ->
     event = { type: type, links: { placement: @id, creative: @creative.creative.id } }

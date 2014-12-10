@@ -44,6 +44,37 @@ describe "creatives", ->
       expect(@node).toHaveId "infeedl-placement-00000000-0000-4000-8000-000000000101"
       expect(["rgb(255, 165, 0)", "#ffa500", "orange"]).toContain computedStyle(@node.find(".infeedl--brand"), "color")
 
+    describe "instant view", ->
+      beforeEach (done) ->
+        setTimeout((->
+          @request = jasmine.Ajax.requests.mostRecent()
+          done()
+        ).bind(this), 1100)
+
+      it "tracks", ->
+        expect(@request.url).toEqual "/events"
+        expect(@request.params).toEqual "events%5Btype%5D=view&events%5Blinks%5D%5Bplacement%5D=00000000-0000-4000-8000-000000000101&events%5Blinks%5D%5Bcreative%5D=00000000-0000-4000-8000-00000000201"
+
+    describe "later view", ->
+      beforeEach ->
+        @node.css("marginTop", "2000px")
+
+      it "tracks", (done) ->
+        setTimeout((->
+          @request = jasmine.Ajax.requests.mostRecent()
+          expect(@request.url).toEqual "/creative?placement_id=00000000-0000-4000-8000-000000000101"
+
+          @node.css("marginTop", "200px")
+
+          setTimeout((->
+            @request = jasmine.Ajax.requests.mostRecent()
+            expect(@request.url).toEqual "/events"
+            expect(@request.params).toEqual "events%5Btype%5D=view&events%5Blinks%5D%5Bplacement%5D=00000000-0000-4000-8000-000000000101&events%5Blinks%5D%5Bcreative%5D=00000000-0000-4000-8000-00000000201"
+
+            done()
+          ).bind(this), 1100)
+        ).bind(this), 1100)
+
     describe "click", ->
       beforeEach ->
         Infeedl.$("[data-infeedl-events-click]:first").trigger("click")
@@ -80,6 +111,17 @@ describe "creatives", ->
     it "styles", ->
       expect(@node).toHaveId "infeedl-placement-00000000-0000-4000-8000-000000000101"
       expect(computedStyle(@node.find(".infeedl--link-image"), "display")).toEqual "block"
+
+    describe "instant view", ->
+      beforeEach (done) ->
+        setTimeout((->
+          @request = jasmine.Ajax.requests.mostRecent()
+          done()
+        ).bind(this), 1100)
+
+      it "tracks", ->
+        expect(@request.url).toEqual "/events"
+        expect(@request.params).toEqual "events%5Btype%5D=view&events%5Blinks%5D%5Bplacement%5D=00000000-0000-4000-8000-000000000101&events%5Blinks%5D%5Bcreative%5D=00000000-0000-4000-8000-00000000201"
 
     describe "click", ->
       beforeEach ->
