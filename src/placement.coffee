@@ -32,7 +32,6 @@ class @Infeedl.Placement
 .infeedl--creative .infeedl--title {
   margin: 15px 0 0 0;
   padding: 0;
-  font-size: 150%;
 }
 
 .infeedl--creative .infeedl--title .infeedl--link-title,
@@ -68,7 +67,9 @@ class @Infeedl.Placement
 
 .infeedl--appearance--horizontal .infeedl--link-image {
   float: left;
-  max-width: 20%;
+  width: 20%;
+  min-width: 150px;
+  min-height: 112px;
   margin-right: 15px;
 }
 
