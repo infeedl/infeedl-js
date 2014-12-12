@@ -109,21 +109,17 @@ class @Infeedl.Placement
 }
   """
 
-  constructor: (node) ->
+  constructor: (@id, node) ->
     @node = Infeedl.$(node)
-    @id = @node.attr("data-infeedl-placement")
+    @node.attr("id", "infeedl-placement-#{@id}")
+
     @creative = null
     @placement = null
     @viewed = false
 
-    @node.attr("id", "infeedl-placement-#{@id}")
     @_client = new Infeedl.Client
-    @_retrieve()
 
-  _sample: ->
-    location.hash == "#infeedl_sample"
-
-  _retrieve: ->
+  fetch: ->
     params = { placement_id: @id }
     params = Infeedl.$.extend(params, sample: true) if @_sample()
 
@@ -134,6 +130,9 @@ class @Infeedl.Placement
     ).bind(this)).fail(( ->
       @_fail()
     ).bind(this))
+
+  _sample: ->
+    location.hash == "#infeedl_sample"
 
   _css: (id, stylesheet) ->
     return if Infeedl.$("##{id}").length > 0

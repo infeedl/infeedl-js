@@ -1,7 +1,6 @@
 describe "creatives", ->
   beforeEach ->
     @node = $("<div></div>")
-    @node.attr("data-infeedl-placement", "00000000-0000-4000-8000-000000000101")
     document.body.appendChild(@node[0])
 
   afterEach ->
@@ -10,7 +9,9 @@ describe "creatives", ->
   describe "hidden", ->
     beforeEach ->
       jasmine.Ajax.stubRequest("/creative?placement_id=00000000-0000-4000-8000-000000000101").andReturn(AjaxFixtures.fail)
-      @placement = new Infeedl.Placement(@node[0])
+
+      @placement = new Infeedl.Placement("00000000-0000-4000-8000-000000000101", @node[0])
+      @placement.fetch()
 
     it "hides", ->
       expect(@node).toBeEmpty()
@@ -22,7 +23,9 @@ describe "creatives", ->
         AjaxFixtures.success,
         AjaxFixtures.creative.sample_article
       ))
-      @placement = new Infeedl.Placement(@node[0])
+
+      @placement = new Infeedl.Placement("00000000-0000-4000-8000-000000000101", @node[0])
+      @placement.fetch()
 
     it "renders", ->
       result = """
@@ -90,7 +93,9 @@ describe "creatives", ->
         AjaxFixtures.success,
         AjaxFixtures.creative.sample_video
       ))
-      @placement = new Infeedl.Placement(@node[0])
+
+      @placement = new Infeedl.Placement("00000000-0000-4000-8000-000000000101", @node[0])
+      @placement.fetch()
 
     it "renders", ->
       result = """

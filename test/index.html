@@ -76,10 +76,9 @@
     Infeedl.Client._base = "http://api.infeedl.dev"
 
     $("[data-placement]").each(function() {
-      $(this).attr("data-infeedl-placement", $(this).attr("data-placement"))
+      var placement = new Infeedl.Placement($(this).attr("data-placement"), this)
+      placement.fetch()
     })
-
-    Infeedl.init()
   </script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </body>
