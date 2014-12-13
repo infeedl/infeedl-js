@@ -9,9 +9,11 @@ class @Infeedl.Creative
   click: (evt) ->
     if @creative.content.embedded
       @_append_embedded()
-      false
     else
-      true
+      @_open_content()
+
+  _open_content: ->
+    window.open(@creative.content.location)
 
   _append_embedded: ->
     @loader = document.createElement("div")

@@ -30,12 +30,12 @@ describe "creatives", ->
     it "renders", ->
       result = """
 <div class="infeedl--creative infeedl--article infeedl--appearance--horizontal">
-  <a class="infeedl--link-image" href="//cdn.infeedl.com/shared/creatives/self-closing.html" target="_blank" data-infeedl-events-click="">
+  <a class="infeedl--link-image" href="//cdn.infeedl.com/shared/creatives/self-closing.html" target="_blank">
     <img class="infeedl--image" src="//cdn.infeedl.com/shared/creatives/sample-image.jpg" alt="WOW">
   </a>
   <p class="infeedl--brand">Supported by Brandname</p>
   <h2 class="infeedl--title">
-    <a class="infeedl--link-title" href="//cdn.infeedl.com/shared/creatives/self-closing.html" target="_blank" data-infeedl-events-click="">
+    <a class="infeedl--link-title" href="//cdn.infeedl.com/shared/creatives/self-closing.html" target="_blank">
       WOW
     </a>
   </h2>
@@ -80,7 +80,7 @@ describe "creatives", ->
 
     describe "click", ->
       beforeEach ->
-        Infeedl.$("[data-infeedl-events-click]:first").trigger("click")
+        Infeedl.$(".infeedl--creative:first").trigger("click")
         @request = jasmine.Ajax.requests.mostRecent()
 
       it "tracks", ->
@@ -100,12 +100,12 @@ describe "creatives", ->
     it "renders", ->
       result = """
 <div class="infeedl--creative infeedl--video infeedl--appearance--horizontal">
-  <a class="infeedl--link-image" href="//cdn.infeedl.com/shared/creatives/self-closing.html" target="_blank" data-infeedl-events-click="">
+  <a class="infeedl--link-image" href="//cdn.infeedl.com/shared/creatives/self-closing.html" target="_blank">
     <img class="infeedl--image" src="//cdn.infeedl.com/shared/creatives/sample-image.jpg" alt="WOW">
   </a>
   <p class="infeedl--brand">Supported by Brandname</p>
   <h2 class="infeedl--title">
-    <a class="infeedl--link-title" href="//cdn.infeedl.com/shared/creatives/self-closing.html" target="_blank" data-infeedl-events-click="">
+    <a class="infeedl--link-title" href="//cdn.infeedl.com/shared/creatives/self-closing.html" target="_blank">
       WOW
     </a>
   </h2>
@@ -130,7 +130,7 @@ describe "creatives", ->
 
     describe "click", ->
       beforeEach ->
-        Infeedl.$("[data-infeedl-events-click]:first").trigger("click")
+        Infeedl.$(".infeedl--creative:first").trigger("click")
         @request = jasmine.Ajax.requests.mostRecent()
 
       afterEach ->

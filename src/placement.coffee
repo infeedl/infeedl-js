@@ -3,6 +3,10 @@
 class @Infeedl.Placement
   @_css: """
 /* COMMON */
+.infeedl--creative {
+  cursor: pointer;
+}
+
 .infeedl--creative:before, .infeedl--creative:after {
   display: table;
   content: " ";
@@ -161,10 +165,13 @@ class @Infeedl.Placement
     # Set up polling for visibility
     @interval = setInterval(@_visible.bind(this), 1000)
 
-    # Clicking on clickable elements
-    @node.on("click", "[data-infeedl-events-click]", ((evt) ->
+    # Clicking on node
+    @node.on("click", ((evt) ->
       @_event("click")
       @creative.click(evt)
+
+      evt.preventDefault()
+      false
     ).bind(this))
 
   _visible: ->
