@@ -4,7 +4,7 @@ class @Infeedl.Creative
   constructor: (@format, @creative, @placement) ->
 
   render: ->
-    InfeedlTemplates[@format].render(@_interpolations())
+    InfeedlTemplates[@format.replace("embedded_", "")].render(@_interpolations())
 
   click: (evt) ->
     if @creative.content.embedded
