@@ -37,8 +37,14 @@ class @Infeedl.Creative
           @_remove_embedded()
     ).bind(this)
 
+    setTimeout((->
+      if @loader
+        @_remove_loader()
+        @_remove_embedded()
+    ).bind(this), 15000)
+
   _remove_loader: ->
-    @loder = null
+    @loader = null
     Infeedl.$(".infeedl--embedded--loader").remove()
     # console?.log("[INFEEDL] Creative ##{@creative.id}: loader removed")
 
