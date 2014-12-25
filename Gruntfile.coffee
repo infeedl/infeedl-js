@@ -46,6 +46,7 @@ module.exports = (grunt) ->
         src: [
           "node_modules/hogan.js/lib/template.js"
           "vendor/jquery.js"
+          "vendor/jquery-ajaxq.js"
           "vendor/talker.js"
           "vendor/isInViewport.js"
           "src/templates.js"
