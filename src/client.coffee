@@ -8,6 +8,9 @@ class @Infeedl.Client
       url: "#{@constructor._base}#{path}"
       data: params
       dataType: "json"
+      xhrFields:
+        withCredentials: true
+      crossDomain: true
     )
 
   post: (path, params) ->
@@ -16,4 +19,7 @@ class @Infeedl.Client
       url: "#{@constructor._base}#{path}"
       data: params
       dataType: "json"
+      xhrFields:
+        withCredentials: true
+      crossDomain: true
     )
