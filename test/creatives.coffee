@@ -67,7 +67,7 @@ describe "creatives", ->
           @request = jasmine.Ajax.requests.mostRecent()
           expect(@request.url).toEqual "/creative?placement_id=00000000-0000-4000-8000-000000000101"
 
-          @node.css("marginTop", "200px")
+          @node.css("marginTop", "100px")
 
           setTimeout((->
             @request = jasmine.Ajax.requests.mostRecent()

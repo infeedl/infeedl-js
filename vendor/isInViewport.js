@@ -31,7 +31,7 @@
     return run(args);
   };
   $.fn.run = run;
-  
+
   //gets the width of the scrollbar
   function getScrollbarWidth(viewport) {
     var scrollBarWidth;
@@ -52,11 +52,12 @@
   }
 
   function isInViewport(element, options) {
+    // PATCH: use center of the element as a rect
     var boundingRect = element.getBoundingClientRect();
-    var top = boundingRect.top;
-    var bottom = boundingRect.bottom;
-    var left = boundingRect.left;
-    var right = boundingRect.right;
+    var top = boundingRect.top + $(element).height()/2 - 1;
+    var bottom = boundingRect.bottom - $(element).height()/2;
+    var left = boundingRect.left + $(element).width()/2 - 1;
+    var right = boundingRect.right - $(element).width()/2;
     var settings = $.extend({
       'tolerance': 0,
       'viewport': window
