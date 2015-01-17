@@ -125,7 +125,7 @@ class @Infeedl.Placement
 
   fetch: ->
     params = { placement_id: @id }
-    params = Infeedl.$.extend(params, sample: true) if @_sample()
+    params = Infeedl.$.extend(params, sample: @_sample()) if @_sample()
 
     @_client.get("/creative", params).done(((data) ->
       @placement = data.linked.placements
@@ -136,7 +136,9 @@ class @Infeedl.Placement
     ).bind(this))
 
   _sample: ->
-    location.hash == "#infeedl_sample"
+    return false if location.hash.indexOf("#infeedl_sample") == -1
+    return true if location.hash == "#infeedl_sample"
+    location.hash.replace("#infeedl_sample=", "")
 
   _css: (id, stylesheet) ->
     return if Infeedl.$("##{id}").length > 0
