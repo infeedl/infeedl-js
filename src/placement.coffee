@@ -24,6 +24,7 @@ class @Infeedl.Placement
   display: block;
   max-width: 100%;
   height: auto;
+  border: 1px solid #ccc;
 }
 
 .infeedl--creative .infeedl--brand {
