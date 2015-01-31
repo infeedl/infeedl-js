@@ -7,9 +7,9 @@
   },
   "devDependencies": {
     "grunt": "^0.4.4",
-    "hogan.js": "^2.0.0",
+    "hogan.js": "2.0.0",
     "grunt-contrib-coffee": "^0.10.1",
-    "grunt-templates-hogan": "^0.2.5",
+    "grunt-templates-hogan": "0.2.5",
     "grunt-contrib-concat": "^0.4.0",
     "grunt-contrib-uglify": "^0.4.0",
     "grunt-contrib-jasmine": "^0.6.3",
