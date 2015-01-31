@@ -56,7 +56,7 @@ class @Infeedl.Placement
   content: "";
   width: 48px;
   height: 48px;
-  background: url(//cdn.infeedl.com/shared/creatives/icon-play@2x.png);
+  background: url(//cdn.infeedl.com/shared/creatives/icon-play.png);
   background-size: 48px 48px;
   position: absolute;
   bottom: 10px;
