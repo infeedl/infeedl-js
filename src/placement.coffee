@@ -119,11 +119,12 @@ class @Infeedl.Placement
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 2147483645;
+  z-index: 2147483644;
 }
 
 .infeedl--embedded--loader {
   background: rgba(0, 0, 0, .8) url(//cdn.infeedl.com/shared/creatives/loader.svg) no-repeat center center;
+  z-index: 2147483645;
 }
   """
 
