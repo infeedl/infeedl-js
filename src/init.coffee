@@ -2,7 +2,7 @@
 
 @Infeedl.init = ->
   Infeedl.$("[data-infeedl-placement]").each ->
-    placement = new Infeedl.Placement($(this).attr("data-infeedl-placement"), this)
+    placement = new Infeedl.Placement(Infeedl.$(this).attr("data-infeedl-placement"), this)
     placement.fetch()
 
 Infeedl.$ = jQuery.noConflict()
