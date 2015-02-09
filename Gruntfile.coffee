@@ -110,6 +110,17 @@ module.exports = (grunt) ->
           { expand: true, cwd: "dist", src: ["*"], dest: "js" }
         ]
 
+    # CloudFront invalidation
+    invalidate_cloudfront:
+      options:
+        key: secrets.AWS_KEY || process.env.AWS_KEY
+        secret: secrets.AWS_SECRET || process.env.AWS_SECRET
+        distribution: "E1VO8EXH3W32T2"
+      deploy:
+        files: [
+          { expand: true, cwd: "dist", src: ["*"], dest: "js" }
+        ]
+
     # Saucelabs
     http:
       jasmine:
@@ -170,6 +181,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-uglify"
   grunt.loadNpmTasks "grunt-contrib-jasmine"
   grunt.loadNpmTasks "grunt-aws-s3"
+  grunt.loadNpmTasks "grunt-invalidate-cloudfront"
   grunt.loadNpmTasks "grunt-http"
 
   # Build
@@ -182,7 +194,7 @@ module.exports = (grunt) ->
   grunt.registerTask "saucelabs", ["aws_s3:jasmine", "http:jasmine"]
 
   # Deploy
-  grunt.registerTask "deploy", ["aws_s3:deploy"]
+  grunt.registerTask "deploy", ["aws_s3:deploy", "invalidate_cloudfront:deploy"]
 
   # Default meta-task
   grunt.registerTask "default", ["build"]

@@ -14,6 +14,7 @@
     "grunt-contrib-uglify": "^0.4.0",
     "grunt-contrib-jasmine": "^0.6.3",
     "grunt-aws-s3": "^0.9.4",
+    "grunt-invalidate-cloudfront": "^0.1.6",
     "grunt-http": "^1.4.2",
     "jasmine-ajax": "git://github.com/pivotal/jasmine-ajax#5665351ab278769374f6a580b7c52c59058682be",
     "jasmine-jquery": "^2.0.5"
