@@ -174,10 +174,12 @@ class @Infeedl.Placement
     @_css("infeedl-placement-#{@id}-stylesheet", @placement.stylesheet)
     @node.html(@creative.render(@placement))
     @node.addClass("infeedl--visible")
+    @node.addClass("infeedl--loaded")
     @_bind()
 
   _fail: ->
     @node.addClass("infeedl--hidden")
+    @node.addClass("infeedl--loaded")
 
   _bind: ->
     # Set up polling for visibility

@@ -15,6 +15,7 @@ describe "creatives", ->
 
     it "hides", ->
       expect(@node).toBeEmpty()
+      expect(@node).toHaveClass "infeedl--loaded"
       expect(@node).toHaveClass "infeedl--hidden"
 
   describe "external article", ->
@@ -41,6 +42,7 @@ describe "creatives", ->
   </h2>
 </div>
       """
+      expect(@node).toHaveClass "infeedl--loaded"
       expect(@node).toHaveClass "infeedl--visible"
       expect(@node).toContainHtml result
 
@@ -112,6 +114,7 @@ describe "creatives", ->
   </h2>
 </div>
       """
+      expect(@node).toHaveClass "infeedl--loaded"
       expect(@node).toHaveClass "infeedl--visible"
       expect(@node).toContainHtml result
 
