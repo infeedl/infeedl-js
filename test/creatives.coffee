@@ -41,6 +41,7 @@ describe "creatives", ->
   </h2>
 </div>
       """
+      expect(@node).toHaveClass "infeedl--visible"
       expect(@node).toContainHtml result
 
     it "styles", ->
@@ -111,6 +112,7 @@ describe "creatives", ->
   </h2>
 </div>
       """
+      expect(@node).toHaveClass "infeedl--visible"
       expect(@node).toContainHtml result
 
     it "styles", ->

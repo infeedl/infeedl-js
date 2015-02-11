@@ -173,6 +173,7 @@ class @Infeedl.Placement
     @_css("infeedl-base-stylesheet", @constructor._css)
     @_css("infeedl-placement-#{@id}-stylesheet", @placement.stylesheet)
     @node.html(@creative.render(@placement))
+    @node.addClass("infeedl--visible")
     @_bind()
 
   _fail: ->
