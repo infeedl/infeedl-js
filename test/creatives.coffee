@@ -7,16 +7,36 @@ describe "creatives", ->
     document.body.removeChild(@node[0])
 
   describe "hidden", ->
-    beforeEach ->
-      jasmine.Ajax.stubRequest("/creative?placement_id=00000000-0000-4000-8000-000000000101").andReturn(AjaxFixtures.fail)
+    describe "nothing at all", ->
+      beforeEach ->
+        jasmine.Ajax.stubRequest("/creative?placement_id=00000000-0000-4000-8000-000000000101").andReturn(AjaxFixtures.fail)
 
-      @placement = new Infeedl.Placement("00000000-0000-4000-8000-000000000101", @node[0])
-      @placement.fetch()
+        @placement = new Infeedl.Placement("00000000-0000-4000-8000-000000000101", @node[0])
+        @placement.fetch()
 
-    it "hides", ->
-      expect(@node).toBeEmpty()
-      expect(@node).toHaveClass "infeedl--loaded"
-      expect(@node).toHaveClass "infeedl--hidden"
+      it "hides", ->
+        expect(@node).toBeEmpty()
+        expect(@node).toHaveClass "infeedl--loaded"
+        expect(@node).toHaveClass "infeedl--hidden"
+
+    describe "empty creative", ->
+      beforeEach ->
+        jasmine.Ajax.stubRequest("/creative?placement_id=00000000-0000-4000-8000-000000000101").andReturn($.extend(
+          AjaxFixtures.fail,
+          AjaxFixtures.creative.empty
+        ))
+
+        @placement = new Infeedl.Placement("00000000-0000-4000-8000-000000000101", @node[0])
+        @placement.fetch()
+
+      it "hides", ->
+        expect(@node).toBeEmpty()
+        expect(@node).toHaveClass "infeedl--loaded"
+        expect(@node).toHaveClass "infeedl--hidden"
+
+      it "styles", ->
+        expect(@node).toHaveId "infeedl-placement-00000000-0000-4000-8000-000000000101"
+        expect(["rgb(255, 165, 0)", "#ffa500", "orange"]).toContain computedStyle(@node, "color")
 
   describe "external article", ->
     beforeEach ->

@@ -139,6 +139,8 @@ class @Infeedl.Placement
     @_client = new Infeedl.Client
 
   fetch: ->
+    @_css("infeedl-base-stylesheet", @constructor._css)
+
     params = { placement_id: @id }
     params = Infeedl.$.extend(params, sample: @_sample()) if @_sample()
 
@@ -146,7 +148,8 @@ class @Infeedl.Placement
       @placement = data.linked.placements
       @creative = new Infeedl.Creative(data.creatives.format, data.creatives, @placement)
       @_render()
-    ).bind(this)).fail(( ->
+    ).bind(this)).fail(((error) ->
+      @placement = error.responseJSON?.linked.placements
       @_fail()
     ).bind(this))
 
@@ -170,7 +173,6 @@ class @Infeedl.Placement
     Infeedl.$("head")[0].appendChild(style)
 
   _render: ->
-    @_css("infeedl-base-stylesheet", @constructor._css)
     @_css("infeedl-placement-#{@id}-stylesheet", @placement.stylesheet)
     @node.html(@creative.render(@placement))
     @node.addClass("infeedl--visible")
@@ -178,6 +180,9 @@ class @Infeedl.Placement
     @_bind()
 
   _fail: ->
+    if @placement
+      @_css("infeedl-placement-#{@id}-stylesheet", @placement.stylesheet)
+
     @node.addClass("infeedl--hidden")
     @node.addClass("infeedl--loaded")
 

@@ -7,9 +7,23 @@ jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000
     status: "200"
     contentType: "application/json"
   fail:
-    status: "500"
+    status: "400"
     contentType: "application/json"
   creative:
+    empty:
+      responseText: JSON.stringify(
+        creatives: null
+        linked:
+          placements: {
+            id: "00000000-0000-4000-8000-000000000101"
+            appearance: "horizontal",
+            stylesheet: """
+#infeedl-placement-00000000-0000-4000-8000-000000000101.infeedl--loaded {
+  color: orange;
+}
+            """
+          }
+      )
     sample_article:
       responseText: JSON.stringify(
         creatives:
