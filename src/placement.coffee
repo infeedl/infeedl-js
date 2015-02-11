@@ -149,6 +149,7 @@ class @Infeedl.Placement
       @creative = new Infeedl.Creative(data.creatives.format, data.creatives, @placement)
       @_render()
     ).bind(this)).fail(((error) ->
+      # console?.error("[INFEEDL] API request failed: ", JSON.stringify(error))
       @placement = error.responseJSON?.linked.placements
       @_fail()
     ).bind(this))

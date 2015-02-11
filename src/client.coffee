@@ -1,7 +1,7 @@
 @Infeedl ||= {}
 
 class @Infeedl.Client
-  @_base: "https://api.infeedl.com"
+  @_base: "//api.infeedl.com"
 
   get: (path, params) ->
     Infeedl.$.ajaxq(path, {
