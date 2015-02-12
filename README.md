@@ -22,7 +22,7 @@ Include INFEEDL library at the end of a page:
 
 ### Advanced
 
-#### INFEEDL creative instead of content
+#### Creative instead of content
 
 Add following style to a page:
 
