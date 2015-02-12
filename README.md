@@ -10,13 +10,13 @@
 
 Add code of INFEEDL creative block to the specific place on a page:
 
-```
+```html
 <div data-infeedl-placement="YOUR PLACEMENT ID"></div>
 ```
 
 Include INFEEDL library at the end of a page:
 
-```
+```javascript
 <script src="//cdn.infeedl.com/js/infeedl.min.js" crossorigin></script>
 ```
 
@@ -26,7 +26,7 @@ Include INFEEDL library at the end of a page:
 
 Add following style to a page:
 
-```
+```css
 <style type="text/css">
 .infeedl--placement {
   -webkit-transition: opacity 0.3s linear;
@@ -50,7 +50,7 @@ Add following style to a page:
 
 Add `class` and `data-infeedl-placement` attributes to your content block:
 
-```
+```html
 <div class="infeedl--placement" data-infeedl-placement="YOUR PLACEMENT ID">
   Your content is here
 </div>
@@ -58,7 +58,7 @@ Add `class` and `data-infeedl-placement` attributes to your content block:
 
 Include INFEEDL library at the end of a page:
 
-```
+```javascript
 <script src="//cdn.infeedl.com/js/infeedl.min.js" crossorigin></script>
 ```
 
@@ -67,7 +67,7 @@ original content in case there is no creative at the moment.
 
 ## Development
 
-- Install NPM dependencies: ```npm install```
-- Install grunt-cli: ```npm install -g grunt-cli```
-- Build: ```grunt build```
-- Build and test: ```grunt test```
+- Install NPM dependencies: `npm install`
+- Install grunt-cli: `npm install -g grunt-cli`
+- Build: `grunt build`
+- Build and test: `grunt test`
