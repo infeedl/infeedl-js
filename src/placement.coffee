@@ -210,6 +210,6 @@ class @Infeedl.Placement
     event = { type: type, links: { placement: @id, creative: @creative.creative.id } }
     @_client.post("/events", events: event).done(((data) ->
       # Cool
-    ).bind(this)).fail(( ->
-      console?.error(arguments...)
+    ).bind(this)).fail(((error) ->
+      # console?.error("[INFEEDL] API request failed: ", JSON.stringify(error))
     ).bind(this))
