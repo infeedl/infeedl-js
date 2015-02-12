@@ -18,8 +18,8 @@ class @Infeedl.Creative
   _append_embedded: ->
     @loader = document.createElement("div")
     @loader.setAttribute("class", "infeedl--embedded--loader")
-    @overflow = Infeedl.$("html,body").css("overflow")
-    Infeedl.$("html,body").css(overflow: "hidden")
+    @overflow = Infeedl.$("body").css("overflow")
+    Infeedl.$("body").css(overflow: "hidden")
     Infeedl.$("body")[0].appendChild(@loader)
 
     @iframe = document.createElement("iframe")
@@ -53,7 +53,7 @@ class @Infeedl.Creative
   _remove_embedded: ->
     @iframe = null
     Infeedl.$(".infeedl--embedded").remove()
-    Infeedl.$("html,body").css(overflow: @overflow)
+    Infeedl.$("body").css(overflow: @overflow)
     # console?.log("[INFEEDL] Creative ##{@creative.id}: embedded removed")
 
   _interpolations: ->
