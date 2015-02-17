@@ -139,6 +139,7 @@ class @Infeedl.Placement
     @_client = new Infeedl.Client
 
   fetch: ->
+    return if @node.hasClass("infeedl--loaded")
     @_css("infeedl-base-stylesheet", @constructor._css)
 
     params = { placement_id: @id }
