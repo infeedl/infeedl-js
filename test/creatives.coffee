@@ -169,6 +169,14 @@ describe "creatives", ->
           return done() if $(".infeedl--embedded").length == 0
         ).bind(this), 300)
 
+      describe "close", ->
+        it "closes", (done) ->
+          @interval = setInterval((->
+            if Infeedl.$(".infeedl--embedded-close").length > 0
+              Infeedl.$(".infeedl--embedded-close").trigger("click")
+              return done() if $(".infeedl--embedded").length == 0
+          ).bind(this), 300)
+
       describe "lifecycle", ->
         it "appends embedded and loader", (done) ->
           expect($("body")).toContainElement ".infeedl--embedded"
