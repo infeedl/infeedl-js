@@ -52,11 +52,22 @@ class @Infeedl.Creative
   _remove_loader: ->
     @loader = null
     Infeedl.$(".infeedl--embedded--loader").remove()
+
+    @close = document.createElement("div")
+    @close.setAttribute("class", "infeedl--embedded-close")
+    Infeedl.$("body")[0].appendChild(@close)
+
+    Infeedl.$(document).on("click", ".infeedl--embedded-close", @_remove_embedded)
     # console?.log("[INFEEDL] Creative ##{@creative.id}: loader removed")
 
   _remove_embedded: ->
+    Infeedl.$(document).off("click", ".infeedl--embedded-close", @_remove_embedded)
+
+    @close = null
     @wrapper = null
     @iframe = null
+
+    Infeedl.$(".infeedl--embedded-close").remove()
     Infeedl.$(".infeedl--embedded-wrapper").remove()
     Infeedl.$("body").removeClass("infeedl--no-scroll")
     # console?.log("[INFEEDL] Creative ##{@creative.id}: embedded removed")

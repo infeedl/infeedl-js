@@ -139,6 +139,18 @@ class @Infeedl.Placement
   height: 100%;
 }
 
+.infeedl--embedded-close {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  width: 42px;
+  height: 42px;
+  z-index: 2147483645;
+  background: url(//cdn.infeedl.com/shared/creatives/btn-close.png) no-repeat center center;
+  background-size: 42px 42px;
+  cursor: pointer;
+}
+
 .infeedl--embedded--loader {
   background: rgba(0, 0, 0, .8) url(//cdn.infeedl.com/shared/creatives/loader.svg) no-repeat center center;
   z-index: 2147483645;
