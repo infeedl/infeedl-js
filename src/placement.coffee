@@ -109,8 +109,17 @@ class @Infeedl.Placement
 }
 
 /* OVERLAY */
-.infeedl--embedded, .infeedl--embedded--loader {
-  display: block;
+.infeedl--no-scroll {
+  overflow: hidden !important;
+}
+
+@media (max-width: 600px) {
+  .infeedl--no-scroll {
+    position: fixed;
+  }
+}
+
+.infeedl--embedded-wrapper, .infeedl--embedded--loader {
   position: absolute;
   position: fixed;
   top: 0;
@@ -120,6 +129,14 @@ class @Infeedl.Placement
   width: 100%;
   height: 100%;
   z-index: 2147483644;
+  overflow: auto;
+  -webkit-overflow-scrolling:touch;
+}
+
+.infeedl--embedded {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .infeedl--embedded--loader {

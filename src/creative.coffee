@@ -18,16 +18,20 @@ class @Infeedl.Creative
   _append_embedded: ->
     @loader = document.createElement("div")
     @loader.setAttribute("class", "infeedl--embedded--loader")
-    @overflow = Infeedl.$("body").css("overflow")
-    Infeedl.$("body").css(overflow: "hidden")
+    Infeedl.$("body").addClass("infeedl--no-scroll")
     Infeedl.$("body")[0].appendChild(@loader)
+
+    @wrapper = document.createElement("div")
+    @wrapper.setAttribute("class", "infeedl--embedded-wrapper")
 
     @iframe = document.createElement("iframe")
     @iframe.setAttribute("src", @creative.content.embedded_location)
     @iframe.setAttribute("frameBorder", "0")
     @iframe.setAttribute("allowtransparency", "true")
     @iframe.setAttribute("class", "infeedl--embedded")
-    Infeedl.$("body")[0].appendChild(@iframe)
+
+    Infeedl.$("body")[0].appendChild(@wrapper)
+    Infeedl.$(".infeedl--embedded-wrapper")[0].appendChild(@iframe)
     # console?.log("[INFEEDL] Creative ##{@creative.id}: embedded added")
 
     talker = new Talker(@iframe.contentWindow, "*")
@@ -51,9 +55,10 @@ class @Infeedl.Creative
     # console?.log("[INFEEDL] Creative ##{@creative.id}: loader removed")
 
   _remove_embedded: ->
+    @wrapper = null
     @iframe = null
-    Infeedl.$(".infeedl--embedded").remove()
-    Infeedl.$("body").css(overflow: @overflow)
+    Infeedl.$(".infeedl--embedded-wrapper").remove()
+    Infeedl.$("body").removeClass("infeedl--no-scroll")
     # console?.log("[INFEEDL] Creative ##{@creative.id}: embedded removed")
 
   _interpolations: ->
