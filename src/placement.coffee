@@ -141,7 +141,7 @@ class @Infeedl.Placement
 
 .infeedl--embedded-close {
   position: absolute;
-  top: 30px;
+  top: 0; /* is set when embedded */
   right: 20px;
   width: 42px;
   height: 42px;
