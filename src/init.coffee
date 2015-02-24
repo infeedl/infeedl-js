@@ -5,5 +5,5 @@
     placement = new Infeedl.Placement(Infeedl.$(this).attr("data-infeedl-placement"), this)
     placement.fetch()
 
-Infeedl.$ = jQuery.noConflict()
+Infeedl.$ = jQuery.noConflict(true)
 @Infeedl.init()
