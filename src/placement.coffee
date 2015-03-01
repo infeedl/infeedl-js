@@ -151,6 +151,12 @@ class @Infeedl.Placement
   cursor: pointer;
 }
 
+@media (max-width: 600px) {
+  .infeedl--embedded-close {
+    position: fixed;
+  }
+}
+
 .infeedl--embedded--loader {
   background: rgba(0, 0, 0, .8) url(//cdn.infeedl.com/shared/creatives/loader.svg) no-repeat center center;
   z-index: 2147483645;
