@@ -229,8 +229,9 @@ class @Infeedl.Placement
 
     # Clicking on node
     @node.on("click", ((evt) ->
+      Infeedl.SharedYandex.event("click", @creative.creative, @placement)
       @_event("click")
-      @creative.click(evt)
+      @creative.click()
 
       evt.preventDefault()
       false
@@ -240,6 +241,7 @@ class @Infeedl.Placement
     if !@viewed && @node.is(":in-viewport")
       clearInterval(@interval) if @interval
       @viewed = true
+      Infeedl.SharedYandex.event("view", @creative.creative, @placement)
       @_event("view")
 
   _event: (type) ->

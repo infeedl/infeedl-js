@@ -16,6 +16,7 @@ module.exports = (grunt) ->
           "src/infeedl.js": [
             "src/creative.coffee"
             "src/creatives/*.coffee"
+            "src/external/*.coffee"
             "src/client.coffee"
             "src/placement.coffee"
             "src/init.coffee"
@@ -50,6 +51,7 @@ module.exports = (grunt) ->
           "vendor/jquery-xdomainrequest.js"
           "vendor/talker.js"
           "vendor/isInViewport.js"
+          "vendor/yandex.js"
           "src/templates.js"
           "src/infeedl.js"
         ]
