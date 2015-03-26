@@ -170,7 +170,7 @@ module.exports = (grunt) ->
               ["Windows 7", "opera", "12"]
             ])
             url: "http://s3.eu-central-1.amazonaws.com/infeedl/infeedl-js/jasmine/_SpecRunner.html"
-            framework: "jasmine"
+            framework: "custom"
             name: "Infeedl JS"
             concurrency: 5
             build: process.env.TRAVIS_JOB_ID || "unknown"
