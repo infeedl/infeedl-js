@@ -164,7 +164,6 @@ module.exports = (grunt) ->
               ["Windows 8", "internet explorer", "10"]
 
               # Win 7
-              ["Windows 7", "internet explorer", "9"]
               ["Windows 7", "chrome", "38"]
               ["Windows 7", "firefox", "33"]
               ["Windows 7", "opera", "12"]
