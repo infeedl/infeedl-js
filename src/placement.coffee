@@ -180,15 +180,15 @@ class @Infeedl.Placement
     params = { placement_id: @id }
     params = Infeedl.$.extend(params, sample: @_sample()) if @_sample()
 
-    @_client.get("/creative", params).done(((data) ->
+    @_client.get("/creative", params).done((data) =>
       @placement = data.linked.placements
       @creative = new Infeedl.Creative(data.creatives.format, data.creatives, @placement)
       @_render()
-    ).bind(this)).fail(((error) ->
+    ).fail((error) =>
       # console?.error("[INFEEDL] API request failed: ", JSON.stringify(error))
       @placement = error.responseJSON?.linked.placements
       @_fail()
-    ).bind(this))
+    )
 
   _sample: ->
     return false if location.hash.indexOf("#infeedl_sample") == -1
@@ -228,14 +228,14 @@ class @Infeedl.Placement
     @interval = setInterval(@_visible.bind(this), 1000)
 
     # Clicking on node
-    @node.on("click", ((evt) ->
+    @node.on("click", (evt) =>
       Infeedl.SharedYandex.event("click", @creative.creative, @placement)
       @_event("click")
       @creative.click()
 
       evt.preventDefault()
       false
-    ).bind(this))
+    )
 
   _visible: ->
     if !@viewed && @node.is(":in-viewport")
@@ -246,8 +246,8 @@ class @Infeedl.Placement
 
   _event: (type) ->
     event = { type: type, links: { placement: @id, creative: @creative.creative.id } }
-    @_client.post("/events", events: event).done(((data) ->
+    @_client.post("/events", events: event).done((data) =>
       # Cool
-    ).bind(this)).fail(((error) ->
+    ).fail((error) =>
       # console?.error("[INFEEDL] API request failed: ", JSON.stringify(error))
-    ).bind(this))
+    )

@@ -72,10 +72,10 @@ describe "creatives", ->
 
     describe "instant view", ->
       beforeEach (done) ->
-        setTimeout((->
+        setTimeout(=>
           @request = jasmine.Ajax.requests.mostRecent()
           done()
-        ).bind(this), 1100)
+        , 1100)
 
       it "tracks", ->
         expect(@request.url).toEqual "/events"
@@ -86,20 +86,20 @@ describe "creatives", ->
         @node.css("marginTop", "2000px")
 
       it "tracks", (done) ->
-        setTimeout((->
+        setTimeout(=>
           @request = jasmine.Ajax.requests.mostRecent()
           expect(@request.url).toEqual "/creative?placement_id=00000000-0000-4000-8000-000000000101"
 
           @node.css("marginTop", "100px")
 
-          setTimeout((->
+          setTimeout(=>
             @request = jasmine.Ajax.requests.mostRecent()
             expect(@request.url).toEqual "/events"
             expect(@request.params).toEqual "events%5Btype%5D=view&events%5Blinks%5D%5Bplacement%5D=00000000-0000-4000-8000-000000000101&events%5Blinks%5D%5Bcreative%5D=00000000-0000-4000-8000-00000000201"
 
             done()
-          ).bind(this), 1100)
-        ).bind(this), 1100)
+          , 1100)
+        , 1100)
 
     describe "click", ->
       beforeEach ->
@@ -144,10 +144,10 @@ describe "creatives", ->
 
     describe "instant view", ->
       beforeEach (done) ->
-        setTimeout((->
+        setTimeout(=>
           @request = jasmine.Ajax.requests.mostRecent()
           done()
-        ).bind(this), 1100)
+        , 1100)
 
       it "tracks", ->
         expect(@request.url).toEqual "/events"
@@ -165,17 +165,17 @@ describe "creatives", ->
         expect(@request.url).toEqual "/events"
         expect(@request.params).toEqual "events%5Btype%5D=click&events%5Blinks%5D%5Bplacement%5D=00000000-0000-4000-8000-000000000101&events%5Blinks%5D%5Bcreative%5D=00000000-0000-4000-8000-00000000201"
 
-        @interval = setInterval((->
+        @interval = setInterval(=>
           return done() if $(".infeedl--embedded").length == 0
-        ).bind(this), 300)
+        , 300)
 
       describe "close", ->
         it "closes", (done) ->
-          @interval = setInterval((->
+          @interval = setInterval(=>
             if Infeedl.$(".infeedl--embedded-close").length > 0
               Infeedl.$(".infeedl--embedded-close").trigger("click")
               return done() if $(".infeedl--embedded").length == 0
-          ).bind(this), 300)
+          , 300)
 
       describe "lifecycle", ->
         it "appends embedded and loader", (done) ->
@@ -184,23 +184,23 @@ describe "creatives", ->
 
           expect($(".infeedl--embedded")).toHaveAttr "src", "http://cdn.infeedl.com/shared/creatives/self-closing-embedded.html"
 
-          @interval = setInterval((->
+          @interval = setInterval(=>
             return done() if $(".infeedl--embedded").length == 0
-          ).bind(this), 300)
+          , 300)
 
         it "removes loader", (done) ->
           checked = false
-          @interval = setInterval((->
+          @interval = setInterval(=>
             return done() if checked && $(".infeedl--embedded").length == 0
 
             if $(".infeedl--embedded--loader").length == 0
               expect($("body")).toContainElement ".infeedl--embedded"
               checked = true
-          ).bind(this), 300)
+          , 300)
 
         it "removes embedded", (done) ->
-          @interval = setInterval((->
+          @interval = setInterval(=>
             if $(".infeedl--embedded").length == 0
               expect($("body")).not.toContainElement ".infeedl--embedded--loader"
               done()
-          ).bind(this), 300)
+          , 300)

@@ -35,19 +35,18 @@ class @Infeedl.Creative
     # console?.log("[INFEEDL] Creative ##{@creative.id}: embedded added")
 
     talker = new Talker(@iframe.contentWindow, "*")
-    talker.onMessage = ((message) ->
+    talker.onMessage = (message) =>
       if message.namespace == "infeedl"
         if message.data.state == "loaded"
           @_remove_loader()
         if message.data.state == "closed"
           @_remove_embedded()
-    ).bind(this)
 
-    setTimeout((->
+    setTimeout(=>
       if @loader
         @_remove_loader()
         @_remove_embedded()
-    ).bind(this), 15000)
+    , 15000)
 
   _remove_loader: ->
     @loader = null
