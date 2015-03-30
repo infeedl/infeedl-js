@@ -163,7 +163,7 @@ class @Infeedl.Placement
 }
   """
 
-  constructor: (@id, node) ->
+  constructor: (@id, node, @options = {}) ->
     @node = Infeedl.$(node)
     @node.attr("id", "infeedl-placement-#{@id}")
 
@@ -184,10 +184,12 @@ class @Infeedl.Placement
       @placement = data.linked.placements
       @creative = new Infeedl.Creative(data.creatives.format, data.creatives, @placement)
       @_render()
+      @options.onSuccess?(@id)
     ).fail((error) =>
       # console?.error("[INFEEDL] API request failed: ", JSON.stringify(error))
       @placement = error.responseJSON?.linked.placements
       @_fail()
+      @options.onFailure?(@id)
     )
 
   _sample: ->

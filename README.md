@@ -65,6 +65,26 @@ Include INFEEDL library at the end of a page:
 This way INFEEDL will replace your content with creative or display
 original content in case there is no creative at the moment.
 
+### API
+
+#### Placement
+
+Initialize placement with id, node to render and optionally callbacks:
+
+```javascript
+var node = document.getElementById("infeedl-placement-node-id")
+var placement = new Infeedl.Placement("YOUR PLACEMENT ID", node, {
+  onSuccess: function(placement_id) {},
+  onFailure: function(placement_id) {}
+})
+```
+
+Then fetch creative:
+
+```javascript
+placement.fetch()
+```
+
 ## Development
 
 - Install NPM dependencies: `npm install`

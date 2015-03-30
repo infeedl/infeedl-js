@@ -21,7 +21,7 @@ describe "creatives", ->
 
     describe "empty creative", ->
       beforeEach ->
-        jasmine.Ajax.stubRequest("/creative?placement_id=00000000-0000-4000-8000-000000000101").andReturn($.extend(
+        jasmine.Ajax.stubRequest("/creative?placement_id=00000000-0000-4000-8000-000000000101").andReturn($.extend({},
           AjaxFixtures.fail,
           AjaxFixtures.creative.empty
         ))
@@ -40,7 +40,7 @@ describe "creatives", ->
 
   describe "external article", ->
     beforeEach ->
-      jasmine.Ajax.stubRequest("/creative?placement_id=00000000-0000-4000-8000-000000000101").andReturn($.extend(
+      jasmine.Ajax.stubRequest("/creative?placement_id=00000000-0000-4000-8000-000000000101").andReturn($.extend({},
         AjaxFixtures.success,
         AjaxFixtures.creative.sample_article
       ))
@@ -112,7 +112,7 @@ describe "creatives", ->
 
   describe "embedded video", ->
     beforeEach ->
-      jasmine.Ajax.stubRequest("/creative?placement_id=00000000-0000-4000-8000-000000000101").andReturn($.extend(
+      jasmine.Ajax.stubRequest("/creative?placement_id=00000000-0000-4000-8000-000000000101").andReturn($.extend({},
         AjaxFixtures.success,
         AjaxFixtures.creative.sample_video
       ))
