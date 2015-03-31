@@ -69,20 +69,20 @@ original content in case there is no creative at the moment.
 
 #### Placement
 
-Initialize placement with id, node to render and optionally callbacks:
+Initialize placement with an id and a node to render in:
 
 ```javascript
 var node = document.getElementById("infeedl-placement-node-id")
-var placement = new Infeedl.Placement("YOUR PLACEMENT ID", node, {
+var placement = new Infeedl.Placement("YOUR PLACEMENT ID", node)
+```
+
+Fetch the creative, optionally passing the callbacks:
+
+```javascript
+placement.fetch({
   onSuccess: function(placement_id) {},
   onFailure: function(placement_id) {}
 })
-```
-
-Then fetch creative:
-
-```javascript
-placement.fetch()
 ```
 
 ## Development
