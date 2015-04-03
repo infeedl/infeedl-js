@@ -6,7 +6,7 @@ class @Infeedl.Creative
   render: ->
     InfeedlTemplates[@format.replace("embedded_", "")].render(@_interpolations())
 
-  click: ->
+  click: (evt) ->
     if @creative.content.embedded
       @_append_embedded()
     else
