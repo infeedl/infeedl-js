@@ -133,26 +133,26 @@ module.exports = (grunt) ->
           form:
             platforms: JSON.stringify([
               # iOS
-              ["OS X 10.9", "iphone", "8.1"]
-              ["OS X 10.9", "iphone", "8.0"]
-              ["OS X 10.9", "ipad", "7.1"]
+              ["OS X 10.10", "iphone", "8.2"]
+              ["OS X 10.10", "iphone", "8.1"]
+              ["OS X 10.9", "ipad", "8.0"]
               ["OS X 10.9", "ipad", "7.0"]
 
               # Android
+              ["Linux", "android", "5.0"]
               ["Linux", "android", "4.4"]
-              ["Linux", "android", "4.3"]
 
               # OS X 10.10
-              ["OS X 10.10", "safari", "8"]
-              ["OS X 10.10", "chrome", "38"]
-              ["OS X 10.10", "firefox", "33"]
+              ["OS X 10.10", "safari", "9"]
+              ["OS X 10.10", "chrome", "41"]
+              ["OS X 10.10", "firefox", "36"]
 
               # OS X 10.9
-              ["OS X 10.9", "safari", "7"]
+              ["OS X 10.9", "safari", "8"]
 
               # Linux
-              ["Linux", "chrome", "38"]
-              ["Linux", "firefox", "33"]
+              ["Linux", "chrome", "41"]
+              ["Linux", "firefox", "36"]
               ["Linux", "opera", "12"]
 
               # Win 8.1
@@ -162,8 +162,8 @@ module.exports = (grunt) ->
               ["Windows 8", "internet explorer", "10"]
 
               # Win 7
-              ["Windows 7", "chrome", "38"]
-              ["Windows 7", "firefox", "33"]
+              ["Windows 7", "chrome", "41"]
+              ["Windows 7", "firefox", "36"]
               ["Windows 7", "opera", "12"]
             ])
             url: "http://s3.eu-central-1.amazonaws.com/infeedl/infeedl-js/jasmine/_SpecRunner.html"
