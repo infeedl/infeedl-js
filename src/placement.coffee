@@ -165,7 +165,10 @@ class @Infeedl.Placement
 
   constructor: (@id, node) ->
     @node = Infeedl.$(node)
+    return if @node.attr("data-infeedl-initialized")
+
     @node.attr("id", "infeedl-placement-#{@id}")
+    @node.attr("data-infeedl-initialized", true)
 
     @creative = null
     @placement = null
