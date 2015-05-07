@@ -18,7 +18,7 @@ class @Infeedl.Creative
   _append_embedded: ->
     @loader = document.createElement("div")
     @loader.setAttribute("class", "infeedl--embedded--loader")
-    Infeedl.$("body").addClass("infeedl--no-scroll")
+    Infeedl.$("html, body").addClass("infeedl--no-scroll")
     Infeedl.$("body")[0].appendChild(@loader)
 
     @wrapper = document.createElement("div")
@@ -69,7 +69,7 @@ class @Infeedl.Creative
 
     Infeedl.$(".infeedl--embedded-close").remove()
     Infeedl.$(".infeedl--embedded-wrapper").remove()
-    Infeedl.$("body").removeClass("infeedl--no-scroll")
+    Infeedl.$("html, body").removeClass("infeedl--no-scroll")
     # console?.log("[INFEEDL] Creative ##{@creative.id}: embedded removed")
 
   _interpolations: ->
