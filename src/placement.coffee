@@ -117,6 +117,18 @@ class @Infeedl.Placement
   .infeedl--no-scroll {
     position: fixed;
   }
+
+  .infeedl--no-scroll:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    z-index: 2147483643;
+  }
 }
 
 .infeedl--embedded-wrapper, .infeedl--embedded--loader {
