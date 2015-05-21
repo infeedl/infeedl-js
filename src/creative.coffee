@@ -16,9 +16,12 @@ class @Infeedl.Creative
     window.open(@creative.content.location)
 
   _append_embedded: ->
+    # Remember scroll position and make body fixed
+    @scrollTop = Infeedl.$(window).scrollTop()
+    Infeedl.$("html, body").addClass("infeedl--no-scroll")
+
     @loader = document.createElement("div")
     @loader.setAttribute("class", "infeedl--embedded--loader")
-    Infeedl.$("html, body").addClass("infeedl--no-scroll")
     Infeedl.$("body")[0].appendChild(@loader)
 
     @wrapper = document.createElement("div")
@@ -69,6 +72,9 @@ class @Infeedl.Creative
     Infeedl.$(".infeedl--embedded-close").remove()
     Infeedl.$(".infeedl--embedded-wrapper").remove()
     Infeedl.$("html, body").removeClass("infeedl--no-scroll")
+
+    # Return to where it was
+    setTimeout((=> Infeedl.$(window).scrollTop(@scrollTop)), 0)
     # console?.log("[INFEEDL] Creative ##{@creative.id}: embedded removed")
 
   _interpolations: ->
