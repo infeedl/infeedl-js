@@ -130,7 +130,7 @@ class @Infeedl.Placement
   height: 100%;
   z-index: 2147483644;
   overflow: auto;
-  -webkit-overflow-scrolling:touch;
+  -webkit-overflow-scrolling: touch;
 }
 
 .infeedl--embedded {

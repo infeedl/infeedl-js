@@ -34,8 +34,8 @@ class @Infeedl.Creative
     Infeedl.$(".infeedl--embedded-wrapper")[0].appendChild(@iframe)
     # console?.log("[INFEEDL] Creative ##{@creative.id}: embedded added")
 
-    talker = new Talker(@iframe.contentWindow, "*")
-    talker.onMessage = (message) =>
+    @talker = new Talker(@iframe.contentWindow, "*")
+    @talker.onMessage = (message) =>
       if message.namespace == "infeedl"
         if message.data.state == "loaded"
           @_remove_loader()
@@ -57,12 +57,11 @@ class @Infeedl.Creative
     Infeedl.$("body")[0].appendChild(@close)
     Infeedl.$(".infeedl--embedded-close").css(top: Infeedl.$(window).scrollTop() + 30)
 
-    Infeedl.$(document).on("click", ".infeedl--embedded-close", @_remove_embedded)
+    Infeedl.$(".infeedl--embedded-close").on("click", @_remove_embedded.bind(this))
+    Infeedl.$(".infeedl--embedded-wrapper").on("scroll", @_scroll.bind(this))
     # console?.log("[INFEEDL] Creative ##{@creative.id}: loader removed")
 
   _remove_embedded: ->
-    Infeedl.$(document).off("click", ".infeedl--embedded-close", @_remove_embedded)
-
     @close = null
     @wrapper = null
     @iframe = null
@@ -75,3 +74,11 @@ class @Infeedl.Creative
   _interpolations: ->
     creative: @creative
     placement: @placement
+
+  _scroll: ->
+    @talker.send("infeedl", {
+      state: "scroll"
+      scroll:
+        y: Infeedl.$(".infeedl--embedded-wrapper").scrollTop()
+        height: (window.innerHeight || $(window).height()) * 2
+    })
