@@ -18,6 +18,7 @@ class @Infeedl.Creative
   _append_embedded: ->
     # Remember scroll position and make body fixed
     @scrollTop = Infeedl.$(window).scrollTop()
+    Infeedl.$("html, body").addClass("infeedl--touch") if @_is_touch()
     Infeedl.$("html, body").addClass("infeedl--no-scroll")
 
     @loader = document.createElement("div")
@@ -73,6 +74,7 @@ class @Infeedl.Creative
     Infeedl.$(".infeedl--embedded-close").remove()
     Infeedl.$(".infeedl--embedded-wrapper").remove()
     Infeedl.$("html, body").removeClass("infeedl--no-scroll")
+    Infeedl.$("html, body").removeClass("infeedl--touch")
 
     # Return to where it was
     setTimeout((=> Infeedl.$(window).scrollTop(@scrollTop)), 0)
@@ -89,3 +91,10 @@ class @Infeedl.Creative
         y: Infeedl.$(".infeedl--embedded-wrapper").scrollTop()
         height: (window.innerHeight || $(window).height()) * 2
     })
+
+  _is_touch: ->
+    (
+      ("ontouchstart" of window) ||
+      navigator.MaxTouchPoints > 0 ||
+      navigator.msMaxTouchPoints > 0
+    )

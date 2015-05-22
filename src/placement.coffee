@@ -113,21 +113,27 @@ class @Infeedl.Placement
   overflow: hidden !important;
 }
 
-@media (max-width: 600px) {
-  .infeedl--no-scroll {
-    position: fixed;
-  }
+.infeedl--touch.infeedl--no-scroll {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
 
-  .infeedl--no-scroll:after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+body.infeedl--no-scroll:after {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .8);
+  z-index: 2147483643;
+}
+
+@media (max-width: 600px) {
+  body.infeedl--no-scroll:after {
     background: #fff;
-    z-index: 2147483643;
   }
 }
 
@@ -163,15 +169,20 @@ class @Infeedl.Placement
   cursor: pointer;
 }
 
-@media (max-width: 600px) {
-  .infeedl--embedded-close {
-    position: fixed;
-  }
+
+.infeedl--touch .infeedl--embedded-close {
+  position: fixed;
 }
 
 .infeedl--embedded--loader {
-  background: rgba(0, 0, 0, .8) url(//cdn.infeedl.com/shared/creatives/loader.svg) no-repeat center center;
+  background: url(//cdn.infeedl.com/shared/creatives/loader.svg) no-repeat center center;
   z-index: 2147483645;
+}
+
+@media (max-width: 600px) {
+  .infeedl--embedded--loader {
+    background-color: rgba(0, 0, 0, .8);
+  }
 }
   """
 
