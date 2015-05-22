@@ -159,7 +159,7 @@ body.infeedl--no-scroll:after {
 
 .infeedl--embedded-close {
   position: absolute;
-  top: 0; /* is set when embedded */
+  top: -100px; /* is set when embedded */
   right: 20px;
   width: 42px;
   height: 42px;

@@ -62,7 +62,7 @@ class @Infeedl.Creative
     Infeedl.$("body")[0].appendChild(@close)
     setTimeout(=>
       Infeedl.$(".infeedl--embedded-close").css(top: Infeedl.$(window).scrollTop() + 30)
-    , 0)
+    , 500)
 
     Infeedl.$(".infeedl--embedded-close").on("click", @_remove_embedded.bind(this))
     Infeedl.$(".infeedl--embedded-wrapper").on("scroll", @_scroll.bind(this))
