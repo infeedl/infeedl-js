@@ -85,6 +85,26 @@ placement.fetch({
 })
 ```
 
+#### Iframe
+
+Include INFEEDL library at the end of a page:
+
+```javascript
+<script src="//cdn.infeedl.com/js/infeedl.min.js" crossorigin></script>
+```
+
+Initialize iframe optionally passing the selector to start height broadcasting:
+
+```javascript
+var infeedl = new Infeedl.Iframe("body");
+```
+
+Call the action when it has been performed:
+
+```javascript
+infeedl.action();
+```
+
 ## Development
 
 - Install NPM dependencies: `npm install`

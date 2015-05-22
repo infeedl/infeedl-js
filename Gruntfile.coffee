@@ -18,6 +18,7 @@ module.exports = (grunt) ->
             "src/creatives/*.coffee"
             "src/client.coffee"
             "src/placement.coffee"
+            "src/iframe.coffee"
             "src/init.coffee"
           ]
       test:
