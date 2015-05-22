@@ -39,11 +39,12 @@ class @Infeedl.Creative
 
     @talker = new Talker(@iframe.contentWindow, "*")
     @talker.onMessage = (message) =>
-      if message.namespace == "infeedl"
-        if message.data.state == "loaded"
-          @_remove_loader()
-        if message.data.state == "closed"
-          @_remove_embedded()
+      return unless message.namespace == "infeedl"
+
+      if message.data.state == "loaded"
+        @_remove_loader()
+      if message.data.state == "closed"
+        @_remove_embedded()
 
     setTimeout(=>
       if @loader
