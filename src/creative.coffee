@@ -20,6 +20,7 @@ class @Infeedl.Creative
     @scrollTop = Infeedl.$(window).scrollTop()
     Infeedl.$("html, body").addClass("infeedl--touch") if @_is_touch()
     Infeedl.$("html, body").addClass("infeedl--no-scroll")
+    Infeedl.$(document).on("mousewheel", @_prevent_event.bind(this))
 
     @loader = document.createElement("div")
     @loader.setAttribute("class", "infeedl--embedded--loader")
@@ -77,6 +78,7 @@ class @Infeedl.Creative
     Infeedl.$(".infeedl--embedded-wrapper").remove()
     Infeedl.$("html, body").removeClass("infeedl--no-scroll")
     Infeedl.$("html, body").removeClass("infeedl--touch")
+    Infeedl.$(document).off("mousewheel")
 
     # Return to where it was
     setTimeout((=> Infeedl.$(window).scrollTop(@scrollTop)), 0)
@@ -100,3 +102,8 @@ class @Infeedl.Creative
       navigator.MaxTouchPoints > 0 ||
       navigator.msMaxTouchPoints > 0
     )
+
+  _prevent_event: (e) ->
+    e.stopPropagation()
+    e.preventDefault()
+    false
