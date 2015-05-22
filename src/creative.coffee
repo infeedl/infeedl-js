@@ -60,7 +60,9 @@ class @Infeedl.Creative
     @close = document.createElement("div")
     @close.setAttribute("class", "infeedl--embedded-close")
     Infeedl.$("body")[0].appendChild(@close)
-    Infeedl.$(".infeedl--embedded-close").css(top: Infeedl.$(window).scrollTop() + 30)
+    setTimeout(=>
+      Infeedl.$(".infeedl--embedded-close").css(top: Infeedl.$(window).scrollTop() + 30)
+    , 0)
 
     Infeedl.$(".infeedl--embedded-close").on("click", @_remove_embedded.bind(this))
     Infeedl.$(".infeedl--embedded-wrapper").on("scroll", @_scroll.bind(this))

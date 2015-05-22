@@ -131,7 +131,7 @@ body.infeedl--no-scroll:after {
   z-index: 2147483643;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 780px) {
   body.infeedl--no-scroll:after {
     background: #fff;
   }
@@ -169,7 +169,6 @@ body.infeedl--no-scroll:after {
   cursor: pointer;
 }
 
-
 .infeedl--touch .infeedl--embedded-close {
   position: fixed;
 }
@@ -179,7 +178,7 @@ body.infeedl--no-scroll:after {
   z-index: 2147483645;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 780px) {
   .infeedl--embedded--loader {
     background-color: rgba(0, 0, 0, .8);
   }
